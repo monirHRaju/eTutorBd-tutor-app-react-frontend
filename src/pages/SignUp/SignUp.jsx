@@ -32,39 +32,33 @@ const SignUp = () => {
 
         // 2. send the photo to store and get the ul
         const image_API_URL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`;
-
+        
         axios.post(image_API_URL, formData).then((res) => {
           const photoURL = res.data.data.url;
+          console.log('after image upload URL is:', photoURL)
+          
 
-          // create user in the database
-          const userInfo = {
-            email: data.email,
-            displayName: data.name,
-            photoURL: photoURL,
-            role: "student",
-          };
-          if (data.role) {
-            userInfo.role = data.role;
+          //update profile with photo
+          const updateProfile = {
+            displayName : data.name,
+            photoURL
           }
-
-          axiosSecure.post("/users", userInfo).then((res) => {
-            if (res.data.insertedId) {
-              console.log("user created in the database");
-            }
-          });
-
-          // update user profile to firebase
-          const userProfile = {
-            displayName: data.name,
-            photoURL: photoURL,
-          };
-
-          updateUserProfile(userProfile)
+            updateUserProfile(updateProfile)
             .then(() => {
               console.log('user profile updated done.')
               navigate(location.state || "/");
             })
             .catch((error) => console.log(error));
+
+          // axiosSecure.post("/users", userInfo).then((res) => {
+          //   if (res.data.insertedId) {
+          //     console.log("user created in the database");
+          //   }
+          // });
+
+          
+
+        
         });
       })
       .catch((error) => {
@@ -326,7 +320,7 @@ const SignUp = () => {
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
         <div
-          onClick={handleGoogleSignIn}
+          
           className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
         >
           <FcGoogle size={32} />
