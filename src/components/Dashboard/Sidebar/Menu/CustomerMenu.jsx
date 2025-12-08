@@ -2,7 +2,6 @@ import { BsFingerprint } from 'react-icons/bs'
 import { GrUserAdmin } from 'react-icons/gr'
 import MenuItem from './MenuItem'
 import { useState } from 'react'
-import BecomeSellerModal from '../../../Modal/BecomeSellerModal'
 const CustomerMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -23,7 +22,7 @@ const CustomerMenu = () => {
         <span className='mx-4 font-medium'>Become A Seller</span>
       </div>
 
-      <BecomeSellerModal closeModal={closeModal} isOpen={isOpen} />
+      {/* <BecomeSellerModal closeModal={closeModal} isOpen={isOpen} /> */}
     </>
   )
 }

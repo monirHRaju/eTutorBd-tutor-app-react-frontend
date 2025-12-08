@@ -1,8 +1,7 @@
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 
-const PurchaseModal = ({ closeModal, isOpen }) => {
-  // Total Price Calculation
-
+const PurchaseModal = ({tuition, closeModal, isOpen }) => {
+  
   return (
     <Dialog
       open={isOpen}
@@ -20,20 +19,20 @@ const PurchaseModal = ({ closeModal, isOpen }) => {
               as='h3'
               className='text-lg font-medium text-center leading-6 text-gray-900'
             >
-              Review Info Before Purchase
+              Review Info Before Apply for this Tuition
             </DialogTitle>
             <div className='mt-2'>
-              <p className='text-sm text-gray-500'>Plant: Money Plant</p>
+              <p className='text-sm text-gray-500'>{tuition.subject}</p>
             </div>
             <div className='mt-2'>
-              <p className='text-sm text-gray-500'>Category: Indoor</p>
+              <p className='text-sm text-gray-500'>{tuition.district}</p>
             </div>
             <div className='mt-2'>
-              <p className='text-sm text-gray-500'>Customer: PH</p>
+              <p className='text-sm text-gray-500'>Customer: {tuition.studentName}</p>
             </div>
 
             <div className='mt-2'>
-              <p className='text-sm text-gray-500'>Price: $ 120</p>
+              <p className='text-sm text-gray-500'>Budget: $ {tuition.budget}</p>
             </div>
             <div className='mt-2'>
               <p className='text-sm text-gray-500'>Available Quantity: 5</p>

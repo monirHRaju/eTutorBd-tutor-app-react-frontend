@@ -38,7 +38,7 @@ const SignUp = () => {
           console.log('after image upload URL is:', photoURL)
           
 
-          //update profile with photo
+          //3. update profile with photo
           const updateProfile = {
             displayName : data.name,
             photoURL
@@ -50,11 +50,7 @@ const SignUp = () => {
             })
             .catch((error) => console.log(error));
 
-          // axiosSecure.post("/users", userInfo).then((res) => {
-          //   if (res.data.insertedId) {
-          //     console.log("user created in the database");
-          //   }
-          // });
+          
 
           
 
@@ -66,108 +62,6 @@ const SignUp = () => {
       });
   };
 
-  // const handleRegistration2 = (data) => {
-
-  //       const profileImg = data.photo[0];
-
-  //       registerUser(data.email, data.password)
-  //           .then(() => {
-
-  //               // 1. store the image in form data
-  //               const formData = new FormData();
-  //               formData.append('image', profileImg);
-
-  //               // 2. send the photo to store and get the ul
-  //               const image_API_URL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`
-
-  //               axios.post(image_API_URL, formData)
-  //                   .then(res => {
-  //                       const photoURL = res.data.data.url;
-
-  //                       // create user in the database
-  //                       const user = {
-  //                           email: data.email,
-  //                           displayName: data.name,
-  //                           photoURL: photoURL
-  //                       }
-  //                       axiosSecure.post('/users', user)
-  //                           .then(res => {
-  //                               if (res.data.insertedId) {
-  //                                   console.log('user created in the database');
-  //                               }
-  //                           })
-
-  //                       // update user profile to firebase
-  //                       const userProfile = {
-  //                           displayName: data.name,
-  //                           photoURL: photoURL
-  //                       }
-
-  //                       updateUserProfile(userProfile)
-  //                           .then(() => {
-  //                               // console.log('user profile updated done.')
-  //                               navigate(location.state || '/');
-  //                           })
-  //                           .catch(error => console.log(error))
-  //                   })
-
-  //           })
-  //           .catch(error => {
-  //               console.log(error)
-  //           })
-  //   }
-
-  // Handle Google Signin
-
-  // const handleGoogleSignIn = async () => {
-  //   try {
-  //     //User Registration using google
-  //     const { user } = await signInGoogle();
-
-  //     navigate(from, { replace: true });
-  //     toast.success("Signup/Login Successful");
-  //     //User Registration using google
-      
-
-  //     const updateRes = await updateUserProfile({
-  //       name: user?.displayName,
-  //       email: user?.email,
-  //       image: user?.photoURL,
-  //     })
-  //     const userEmail = {
-  //       email : user.email
-  //     }
-  //     const existUser = axiosSecure.get('/user', userEmail)
-
-  //     if(!existUser){
-  //       console.log('exist user', existUser)
-
-  //       const userInfo = {
-  //           name: user?.displayName,
-  //           email: user?.email,
-  //           image: user?.photoURL,
-  //           role: "student",
-  //         };
-          
-  //         axiosSecure.post("/users", userInfo).then((res) => {
-  //           if (res.data.insertedId) {
-  //             console.log("user created in the database");
-  //           }
-  //         });
-        
-  //         navigate(from, { replace: true })
-  //         toast.success('User Created and Login Successful')
-  //         return
-  //     }
-
-  //     navigate(from, { replace: true })
-  //     toast.success('Login Successful')
-    
-  //   } catch (err) {
-  //     console.log(err);
-  //     toast.error(err?.message);
-  //   }
-  // };
   return (
     <div className="flex justify-center items-center min-h-screen bg-white">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">

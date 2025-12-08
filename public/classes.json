@@ -1,0 +1,20 @@
+[
+  { "id": 1, "name": "Play" },
+  { "id": 2, "name": "Nursery" },
+  { "id": 3, "name": "KG" },
+  { "id": 4, "name": "Class 1" },
+  { "id": 5, "name": "Class 2" },
+  { "id": 6, "name": "Class 3" },
+  { "id": 7, "name": "Class 4" },
+  { "id": 8, "name": "Class 5" },
+  { "id": 9, "name": "Class 6" },
+  { "id": 10, "name": "Class 7" },
+  { "id": 11, "name": "Class 8" },
+  { "id": 12, "name": "Class 9" },
+  { "id": 13, "name": "Class 10" },
+  { "id": 14, "name": "Class 11" },
+  { "id": 15, "name": "Class 12" },
+  { "id": 16, "name": "Diploma" },
+  { "id": 17, "name": "Honours / Bachelor's" },
+  { "id": 18, "name": "Masters" }
+]

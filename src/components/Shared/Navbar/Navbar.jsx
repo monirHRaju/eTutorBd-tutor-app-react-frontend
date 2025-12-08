@@ -8,7 +8,8 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li><Link to={"/"}>Home</Link></li>
-      <li><Link to={"/tutions"}>Tutions</Link></li>
+      <li><Link to={"/add-tuition"}>Add Tution</Link></li>
+      <li><Link to={"/tuitions"}>Tutions</Link></li>
       <li><Link to={"/tutors"}>Tutors</Link></li>
       <li><Link to={"/contact"}>Contact</Link></li>
       <li><Link to={"/profile"}>Profile</Link></li>

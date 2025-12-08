@@ -1,9 +1,10 @@
-import Plants from '../../components/Home/Plants'
+import Tuitions from '../../components/Home/Tuitions'
+
 
 const Home = () => {
   return (
     <div>
-      <Plants />
+      <Tuitions></Tuitions>
       {/* More components */}
     </div>
   )

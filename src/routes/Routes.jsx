@@ -10,6 +10,9 @@ import Statistics from '../pages/Dashboard/Common/Statistics'
 import MainLayout from '../layouts/MainLayout'
 import ProfilePage from '../pages/Profile/Profile'
 import { createBrowserRouter } from 'react-router'
+import AddTution from '../pages/AddTution/AddTution'
+import AllTuitions from '../pages/AllTuitions/AllTuitions'
+import TuitionDetails from '../pages/TuitionDetails/TuitionDetails'
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +27,18 @@ export const router = createBrowserRouter([
       {
         path: 'profile',
         element: <PrivateRoute><ProfilePage></ProfilePage> </PrivateRoute>
+      },
+      {
+        path: 'add-tuition',
+        element: <PrivateRoute><AddTution></AddTution></PrivateRoute>
+      },
+      {
+        path: 'tuition-details/:id',
+        element: <TuitionDetails></TuitionDetails>
+      },
+      {
+        path: 'all-tuitions',
+        element: <AllTuitions></AllTuitions> 
       }
     ],
   },
