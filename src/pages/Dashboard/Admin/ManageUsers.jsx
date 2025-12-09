@@ -1,6 +1,20 @@
+import { useQuery } from '@tanstack/react-query'
 import UserDataRow from '../../../components/Dashboard/TableRows/UserDataRow'
+import useAuth from '../../../hooks/useAuth'
+import useAxios from '../../../hooks/useAxios'
 
 const ManageUsers = () => {
+  const axiosInstance = useAxios()
+  const {user} = useAuth()
+  
+  const {data:users=[], refetch} = useQuery({
+    queryKey: ['users', user?.email],
+    queryFn: async()  => {
+      const {data} = await axiosInstance.get('/users')
+      return data
+    }
+  })
+
   return (
     <>
       <div className='container mx-auto px-4 sm:px-8'>
@@ -14,8 +28,16 @@ const ManageUsers = () => {
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
+                      Name
+                    </th>
+                    
+                    <th
+                      scope='col'
+                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                    >
                       Email
                     </th>
+                    
                     <th
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
@@ -38,7 +60,10 @@ const ManageUsers = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <UserDataRow />
+                  {
+                    users.map((user) => <UserDataRow key={user._id} refetch={refetch} user={user}/>)
+                  }
+                  
                 </tbody>
               </table>
             </div>

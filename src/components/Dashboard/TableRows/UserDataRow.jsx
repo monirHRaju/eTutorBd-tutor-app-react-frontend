@@ -1,22 +1,60 @@
 import { useState } from 'react'
 import UpdateUserRoleModal from '../../Modal/UpdateUserRoleModal'
+import { FaUserCheck } from 'react-icons/fa6'
+import useAxiosSecure from '../../../hooks/useAxiosSecure'
+import Swal from 'sweetalert2'
 
-const UserDataRow = () => {
+const UserDataRow = ({user, refetch}) => {
   let [isOpen, setIsOpen] = useState(false)
   const closeModal = () => setIsOpen(false)
+  const axiosSecure = useAxiosSecure()
+
+
+  const handleStatus = status => {
+  
+    const statusData = {status}
+    axiosSecure.patch(`/users/${user._id}/status`, statusData)
+        .then( res => {
+          if(res.data.modifiedCount){
+            refetch();
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: `User status is set to ${status}.`,
+                showConfirmButton: false,
+                timer: 2000
+            });
+            console.log('status updated ', status );
+          }
+        })
+  }
   return (
     <tr>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 '>abc@gmail.com</p>
+        <p className='text-gray-900 '>{user?.name}</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 '>Customer</p>
+        <p className='text-gray-900 '>{user?.email}</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className=''>Unavailable</p>
+        <p className=''>{user?.role}</p>
+      </td>
+      
+      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+        <p className={user?.status==='pending'? 'text-warning' : user?.status === 'accepted' ? 'text-success' : 'text-error'}>{user?.status}</p>
       </td>
 
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+        {/* update status button */}
+        {
+          user?.status === 'accepted'
+          ? <button onClick={()=> handleStatus('rejected')} className='btn btn-error btn-sm ml-3'><FaUserCheck size={20} /></button>
+          : <button onClick={()=> handleStatus('accepted')} className='btn btn-success btn-sm ml-3'><FaUserCheck size={20} /></button>
+        }
+        
+        
+
+        {/* update role modal */}
         <span
           onClick={() => setIsOpen(true)}
           className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'
@@ -31,7 +69,9 @@ const UserDataRow = () => {
         <UpdateUserRoleModal
           isOpen={isOpen}
           closeModal={closeModal}
-          role='customer'
+          role={user?.role}
+          user={user}
+          refetch={refetch}
         />
       </td>
     </tr>

@@ -1,12 +1,11 @@
 import Container from '../../components/Shared/Container'
-import Heading from '../../components/Shared/Heading'
 import Button from '../../components/Shared/Button/Button'
 import PurchaseModal from '../../components/Modal/PurchaseModal'
 import { useState } from 'react'
-import { useParams } from 'react-router'
+import { Link, useNavigate, useParams } from 'react-router'
 import { useQuery } from '@tanstack/react-query'
 import useAxios from '../../hooks/useAxios'
-import { FaClock } from 'react-icons/fa6'
+import { FaClock, FaLeftLong } from 'react-icons/fa6'
 
 const TuitionDetails = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -39,20 +38,27 @@ const TuitionDetails = () => {
     refetch()
     setIsOpen(false)
   }
+  const navigate = useNavigate()
+  const goBack = () => {
+    navigate(-1); 
+  }
   return (
     <Container>
       <div className='mx-auto w-full gap-12'>
         
-        <div className='md:gap-10 flex-1'>
+        <div className='md:gap-10 flex-1 my-20'>
           {/* Plant Info */}
-          <Heading
-            title={tuition.subject}
-            subtitle={`Location: ${tuition.district}, ${tuition.location}`}
-          />
+          <button onClick={goBack} className='flex items-center gap-3 shadow-md px-3 py-2 hover:bg-red-100' >
+            <FaLeftLong></FaLeftLong>
+            Go Back</button>
+          
+          <h2 className='text-3xl font-bold'>Tuition Needed for : <span className='text-primary'>{tuition.subject}</span></h2>
+            <p className='text-2xl text-secondary font-semibold'>{tuition.district} </p>
+            <p className='font-semibold'>Address: {tuition.location}</p>
           <hr className='my-6' />
           <div
             className='text-lg font-light text-neutral-500 flex items-center gap-5'>
-            <FaClock></FaClock>
+            Schedule: <FaClock></FaClock>
             {tuition.schedule}
           </div>
           <hr className='my-6' />
@@ -67,10 +73,10 @@ const TuitionDetails = () => {
                 gap-2
               '
           >
-            <div>
+            {/* <div>
                 <img src={student.photoURL} alt="" />
                <p>Student Name : {student.name}</p>
-            </div>
+            </div> */}
 
 
             

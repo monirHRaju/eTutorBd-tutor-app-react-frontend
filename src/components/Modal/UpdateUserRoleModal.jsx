@@ -1,9 +1,32 @@
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import { useState } from 'react'
+import useAxiosSecure from '../../hooks/useAxiosSecure'
+import toast from 'react-hot-toast'
+import Swal from 'sweetalert2'
 
-const UpdateUserRoleModal = ({ isOpen, closeModal, role }) => {
+const UpdateUserRoleModal = ({ isOpen, closeModal, role, user, refetch }) => {
   const [updatedRole, setUpdatedRole] = useState(role)
-
+  const axiosSecure = useAxiosSecure()
+  const handleUpdateRole = e => {
+    e.preventDefault()
+    // const updatedRole = e.target.role.value
+    const role = {role : updatedRole}
+    axiosSecure.patch(`/users/${user._id}`, role)
+    .then( res => {
+      if(res.data.modifiedCount){
+        refetch();
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `User role is set to ${updatedRole}.`,
+            showConfirmButton: false,
+            timer: 2000
+        });
+        console.log('role updated ' );
+        closeModal()
+      }
+    })
+  }
   return (
     <>
       <Dialog
@@ -24,7 +47,7 @@ const UpdateUserRoleModal = ({ isOpen, closeModal, role }) => {
               >
                 Update User Role
               </DialogTitle>
-              <form>
+              <form onSubmit={handleUpdateRole}>
                 <div>
                   <select
                     value={updatedRole}
@@ -33,14 +56,14 @@ const UpdateUserRoleModal = ({ isOpen, closeModal, role }) => {
                     name='role'
                     id=''
                   >
-                    <option value='customer'>Customer</option>
-                    <option value='seller'>Seller</option>
+                    <option value='student'>Student</option>
+                    <option value='tutor'>Tutor</option>
                     <option value='admin'>Admin</option>
                   </select>
                 </div>
                 <div className='flex mt-2 justify-around'>
                   <button
-                    type='button'
+                    type='submit'
                     className='cursor-pointer inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2'
                   >
                     Update

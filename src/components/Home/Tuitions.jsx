@@ -18,11 +18,11 @@ const Tuitions = () => {
       return data;
     },
   });
-  console.log(tuitions)
+  // console.log(tuitions)
   return (
 
     <Container>
-        <h1>All aps</h1>
+      {/* <h1>All aps</h1> */}
       <div className="pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {
           tuitions.map((tuition, index) => <Card key={index} tuition={tuition} />)

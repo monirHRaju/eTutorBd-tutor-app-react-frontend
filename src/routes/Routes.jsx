@@ -57,7 +57,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'manage-tutions',
+        path: 'manage-users',
         element: (
           <PrivateRoute>
             <ManageUsers />

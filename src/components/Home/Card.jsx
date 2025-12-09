@@ -11,22 +11,23 @@ const Card = ({tuition}) => {
       <div className='space-y-3'>
         
         <div className='font-semibold text-2xl text-primary'>{tuition.subject}</div>
-        <div className='btn btn-primary font-semibold bg-primary px-3 py-2'> {tuition.district}</div>
-        <div className='font-semibold text-lg'>Location: {tuition.location}</div>
-        <div className='font-semibold text-lg flex gap-4 items-center'>
-          <IoMdTime  size={20}/> 
-          <p>{tuition.schedule}</p>
-        </div>
+        <div className='badge badge-primary'> {tuition.district}</div>
+        <div className='font-semibold text-lg'>Address: {tuition.location}</div>
         
-        <div className='flex flex-row items-center gap-1'>
+        
+        <div className='flex flex-row justify-between items-center gap-1'>
           <div className='font-semibold flex flex-row gap-4 items-center'> 
             <FaRegMoneyBill1 size={20}/> 
             <p>{tuition.budget}</p>
           </div>
+          <div className='font-semibold text-lg flex gap-4 items-center'>
+          <IoMdTime  size={20}/> 
+          <p>{tuition.schedule}</p>
+        </div>
         </div>
 
-        <div>
-          <button className='btn btn-secondary'>Send Offer</button>
+        <div className='flex justify-center'>
+          <button className='btn btn-base-300'>View Details</button>
         </div>
       </div>
     </Link>

@@ -5,6 +5,7 @@ import { ImSpinner } from "react-icons/im";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import axios from "axios";
+import toast from 'react-hot-toast'
 
 const SignUp = () => {
   const { registerUser, updateUserProfile, loading } = useAuth();
@@ -22,6 +23,7 @@ const SignUp = () => {
 
   // form submit handler
   const handleRegistration = async (data) => {
+    const { name, email, role } = data;
     const profileImg = data.photo[0];
 
     registerUser(data.email, data.password)
@@ -31,34 +33,47 @@ const SignUp = () => {
         formData.append("image", profileImg);
 
         // 2. send the photo to store and get the ul
-        const image_API_URL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`;
-        
+        const image_API_URL = `https://api.imgbb.com/1/upload?key=${
+          import.meta.env.VITE_IMGBB_API_KEY
+        }`;
+
         axios.post(image_API_URL, formData).then((res) => {
           const photoURL = res.data.data.url;
-          console.log('after image upload URL is:', photoURL)
-          
+           // save user data to mongo
+              const userData = {
+                name,
+                email,
+                role,
+                photoURL
+              };
+
+              const result = axiosSecure.post('/users', userData)
+                            .then(res => {
+                              if(res.data.insertedId){
+                                console.log('user created in the database')
+                              }
+                            })
+
+              console.log('after save data to mongo:', result.data)
+              toast.success('user crated success')
 
           //3. update profile with photo
           const updateProfile = {
-            displayName : data.name,
-            photoURL
-          }
-            updateUserProfile(updateProfile)
+            displayName: data.name,
+            photoURL,
+          };
+          updateUserProfile(updateProfile)
             .then(() => {
-              console.log('user profile updated done.')
-              navigate(location.state || "/");
+              console.log("user profile updated done.");
+              // navigate(location.state || "/");
             })
             .catch((error) => console.log(error));
-
-          
-
-          
-
-        
         });
       })
       .catch((error) => {
-        console.log(error);
+
+        toast.error(error.message, 'Please Login!')
+        navigate('/login')
       });
   };
 
@@ -213,10 +228,7 @@ const SignUp = () => {
           </p>
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
-        <div
-          
-          className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
-        >
+        <div className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer">
           <FcGoogle size={32} />
 
           <p>Continue with Google</p>
