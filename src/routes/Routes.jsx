@@ -14,6 +14,7 @@ import AddTution from '../pages/AddTution/AddTution'
 import AllTuitions from '../pages/AllTuitions/AllTuitions'
 import TuitionDetails from '../pages/TuitionDetails/TuitionDetails'
 import ManageTuitions from '../pages/Dashboard/Admin/ManageTuitions'
+import AdminRoute from './AdminRoute'
 
 export const router = createBrowserRouter([
   {
@@ -60,18 +61,18 @@ export const router = createBrowserRouter([
       {
         path: 'manage-users',
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <ManageUsers />
-          </PrivateRoute>
+          </AdminRoute>
         ),
       },
       
       {
         path: 'manage-tuitions',
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <ManageTuitions />
-          </PrivateRoute>
+          </AdminRoute>
         ),
       },
 

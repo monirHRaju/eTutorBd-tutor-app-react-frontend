@@ -1,15 +1,17 @@
 import Container from '../../components/Shared/Container'
 import Button from '../../components/Shared/Button/Button'
-import PurchaseModal from '../../components/Modal/PurchaseModal'
+import OfferModal from '../../components/Modal/OfferModal'
 import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router'
 import { useQuery } from '@tanstack/react-query'
 import useAxios from '../../hooks/useAxios'
 import { FaClock, FaLeftLong } from 'react-icons/fa6'
+import useAuth from '../../hooks/useAuth'
 
 const TuitionDetails = () => {
   const [isOpen, setIsOpen] = useState(false)
   const axiosInstance = useAxios()
+  const {user} = useAuth()
 
   const {id} = useParams()
 
@@ -86,12 +88,17 @@ const TuitionDetails = () => {
           <div className='flex justify-between'>
             <p className='font-bold text-3xl text-gray-500'>Budget: {tuition.budget}$</p>
             <div>
-              <Button onClick={() => setIsOpen(true)} label='Apply as Tutor' />
+              {
+                user 
+                ? <Button onClick={() => setIsOpen(true)} label='Apply as Tutor' />
+                : <Link to={'/login'} className='btn btn-primary'>Apply as Tutor</Link>
+              }
+              
             </div>
           </div>
           <hr className='my-6' />
 
-          <PurchaseModal tuition={tuition} closeModal={closeModal} isOpen={isOpen} />
+          <OfferModal tuition={tuition} closeModal={closeModal} isOpen={isOpen} />
         </div>
       </div>
     </Container>

@@ -1,7 +1,6 @@
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
 import { useState } from 'react'
 import useAxiosSecure from '../../hooks/useAxiosSecure'
-import toast from 'react-hot-toast'
 import Swal from 'sweetalert2'
 
 const UpdateUserRoleModal = ({ isOpen, closeModal, role, user, refetch }) => {
@@ -22,7 +21,6 @@ const UpdateUserRoleModal = ({ isOpen, closeModal, role, user, refetch }) => {
             showConfirmButton: false,
             timer: 2000
         });
-        console.log('role updated ' );
         closeModal()
       }
     })
