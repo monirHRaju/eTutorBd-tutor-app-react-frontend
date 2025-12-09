@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Container from "../../components/Shared/Container";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const AddTution = () => {
   const [classes, setClasses] = useState([]);
@@ -36,12 +37,25 @@ const AddTution = () => {
       data.studentName = user.displayName
       data.studentEmail = user.email
       data.studentId = user.uid
+      data.status = 'pending'
       
       console.log(data);
 
-      const result = await axiosSecure.post('/tuitions', data)
+      await axiosSecure.post('/tuitions', data)
+      .then((res) => {
+        console.log('Tuiond Added, inserted Id:', res.data.insertedId)
+              if (res.data.insertedId) {
 
-      console.log(result)
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: `Tuition Created Success. Please wait for admin approval.`,
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+              }
+            });
+     
     };
 
 
@@ -173,10 +187,6 @@ const AddTution = () => {
                 type="number"
                 {...register("budget", {
                   required: "budget is required",
-                  minLength: {
-                    value: 4,
-                    message: "budget must at least 4 characters.",
-                  },
                 })}
                 id="budget"
                 placeholder="Enter Your budget Here"

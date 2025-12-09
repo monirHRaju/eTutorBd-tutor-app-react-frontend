@@ -5,7 +5,8 @@ import { ImSpinner } from "react-icons/im";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import axios from "axios";
-import toast from 'react-hot-toast'
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { registerUser, updateUserProfile, loading } = useAuth();
@@ -18,7 +19,7 @@ const SignUp = () => {
   } = useForm();
 
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
   // const from = location.state || "/";
 
   // form submit handler
@@ -39,23 +40,25 @@ const SignUp = () => {
 
         axios.post(image_API_URL, formData).then((res) => {
           const photoURL = res.data.data.url;
-           // save user data to mongo
-              const userData = {
-                name,
-                email,
-                role,
-                photoURL
-              };
+          // save user data to mongo
+          const userData = {
+            name,
+            email,
+            role,
+            photoURL,
+          };
 
-              const result = axiosSecure.post('/users', userData)
-                            .then(res => {
-                              if(res.data.insertedId){
-                                console.log('user created in the database')
-                              }
-                            })
-
-              console.log('after save data to mongo:', result.data)
-              toast.success('user crated success')
+          axiosSecure.post("/users", userData).then((res) => {
+            if (res.data.insertedId) {
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: `Registration Successful!`,
+                showConfirmButton: false,
+                timer: 2000,
+              });
+            }
+          });
 
           //3. update profile with photo
           const updateProfile = {
@@ -64,16 +67,14 @@ const SignUp = () => {
           };
           updateUserProfile(updateProfile)
             .then(() => {
-              console.log("user profile updated done.");
-              // navigate(location.state || "/");
+             
+              navigate(location.state || "/");
             })
             .catch((error) => console.log(error));
         });
       })
       .catch((error) => {
-
-        toast.error(error.message, 'Please Login!')
-        navigate('/login')
+        toast.error(error.message);
       });
   };
 

@@ -13,6 +13,7 @@ import { createBrowserRouter } from 'react-router'
 import AddTution from '../pages/AddTution/AddTution'
 import AllTuitions from '../pages/AllTuitions/AllTuitions'
 import TuitionDetails from '../pages/TuitionDetails/TuitionDetails'
+import ManageTuitions from '../pages/Dashboard/Admin/ManageTuitions'
 
 export const router = createBrowserRouter([
   {
@@ -64,6 +65,16 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      
+      {
+        path: 'manage-tuitions',
+        element: (
+          <PrivateRoute>
+            <ManageTuitions />
+          </PrivateRoute>
+        ),
+      },
+
       {
         path: 'profile',
         element: (
