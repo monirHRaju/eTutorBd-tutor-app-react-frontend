@@ -15,6 +15,7 @@ import AllTuitions from '../pages/AllTuitions/AllTuitions'
 import TuitionDetails from '../pages/TuitionDetails/TuitionDetails'
 import ManageTuitions from '../pages/Dashboard/Admin/ManageTuitions'
 import AdminRoute from './AdminRoute'
+import TutorApplications from '../pages/Dashboard/Tutor/ManageTutorApplications'
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
             <Statistics />
           </PrivateRoute>
         ),
+      },
+      {
+        path: 'my-applications',
+        element: <PrivateRoute><TutorApplications></TutorApplications></PrivateRoute>
       },
       {
         path: 'manage-users',

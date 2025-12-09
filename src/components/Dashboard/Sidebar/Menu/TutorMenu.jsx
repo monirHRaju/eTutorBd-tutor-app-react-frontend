@@ -1,11 +1,11 @@
-import { BsFingerprint } from 'react-icons/bs'
+import { FaWpforms } from "react-icons/fa"
 import MenuItem from './MenuItem'
 import { MdOutlineManageHistory } from 'react-icons/md'
 const TutorMenu = () => {
 
   return (
     <>
-      <MenuItem icon={BsFingerprint} label='My Applications' address='my-tutor-applications' />
+      <MenuItem icon={FaWpforms} label='My Applications' address='my-applications' />
       <MenuItem
         icon={MdOutlineManageHistory}
         label='Manage Payments'

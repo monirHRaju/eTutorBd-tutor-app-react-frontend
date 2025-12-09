@@ -98,7 +98,7 @@ const TuitionDetails = () => {
           </div>
           <hr className='my-6' />
 
-          <OfferModal tuition={tuition} closeModal={closeModal} isOpen={isOpen} />
+          <OfferModal tuition={tuition} refetch={refetch} closeModal={closeModal} isOpen={isOpen} />
         </div>
       </div>
     </Container>

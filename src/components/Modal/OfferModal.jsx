@@ -2,9 +2,8 @@ import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import useAxios from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import { useQuery } from "@tanstack/react-query";
 
-const OfferModal = ({ tuition, closeModal, isOpen }) => {
+const OfferModal = ({ tuition, closeModal, isOpen, refetch }) => {
   const axiosInstance = useAxios();
   const { user } = useAuth();
   const {
@@ -15,26 +14,13 @@ const OfferModal = ({ tuition, closeModal, isOpen }) => {
       _id: tuitionId,
     } = tuition;
 
-  const {data: userRole = null, refetch} = useQuery({
-    queryKey: ["user-role", user?.email],
-    queryFn: async() => {
-      // search user role type
-      const {data} = await axiosInstance.get(`/users/${user?.email}/email`)
-      
-      return data
-    },
-    enabled: !!user?.email
-
-  })
-
-  console.log(userRole)
 
   
   const handleSendOffer = (e) => {
     e.preventDefault();
     const offerPrice = e.target.offer.value;
 
-    const offerInfo = {
+    const applicationInfo = {
       offerPrice,
       studentName,
       budget,
@@ -42,10 +28,9 @@ const OfferModal = ({ tuition, closeModal, isOpen }) => {
       studentEmail,
       tuitionId,
       tutorName: user?.displayName,
-      tutorEmail: user?.email,
+      tutorEmail: user?.email
     };
-    axiosInstance
-      .post("/offers", offerInfo)
+    axiosInstance.post("/applications", applicationInfo)
       .then((res) => {
         if (res.data.insertedId) {
           closeModal()
