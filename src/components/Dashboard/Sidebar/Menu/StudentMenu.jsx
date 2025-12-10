@@ -11,9 +11,22 @@ const StudentMenu = () => {
       />
       <MenuItem
         icon={MdOutlineManageHistory}
-        label='Manage Payments'
-        address='manage-payments'
+        label='Post New Tuition'
+        address='post-tuition'
       />
+      
+      <MenuItem
+        icon={MdOutlineManageHistory}
+        label='Applied Tutors'
+        address='applied-tutors'
+      />
+      
+      <MenuItem
+        icon={MdOutlineManageHistory}
+        label='Payments'
+        address='payments'
+      />
+      
     </>
   )
 }

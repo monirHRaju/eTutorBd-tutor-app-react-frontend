@@ -2,9 +2,16 @@ import { FaTrash, FaUserCheck } from "react-icons/fa6";
 import { TiUserDelete } from "react-icons/ti";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useRole from "../../../hooks/useRole";
+import { FaEye } from "react-icons/fa";
+import ViewApplicationsModal from "../../Modal/ViewApplicationsModal";
+import { useState } from "react";
 
 const TuitionsDataRow = ({ tuition, refetch }) => {
+    let [isOpen, setIsOpen] = useState(false)
+    const closeModal = () => setIsOpen(false)
   const axiosSecure = useAxiosSecure();
+  const {role} = useRole()
 
   const handleStatus = (status) => {
     const statusData = { status };
@@ -83,7 +90,10 @@ const TuitionsDataRow = ({ tuition, refetch }) => {
 
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         {/* update status button */}
-        {tuition?.status === "accepted" ? (
+        
+        {
+          role === 'admin' && <>
+            {tuition?.status === "accepted" ? (
           <button
             onClick={() => handleStatus("rejected")}
             className="btn btn-error btn-sm ml-3"
@@ -98,7 +108,23 @@ const TuitionsDataRow = ({ tuition, refetch }) => {
             <FaUserCheck size={20} />
           </button>
         )}
-
+          </>
+          
+          
+        }
+        {/* see application */}
+        {/* update role modal */}
+        <span
+          onClick={() => setIsOpen(true)}
+          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'
+        >
+          <span
+            aria-hidden='true'
+            className='absolute inset-0 bg-green-200 opacity-50 rounded-full'
+          ></span>
+          <span className='relative'>View Applications</span>
+        </span>
+        
         {/* delete tuition*/}
         <button
           onClick={() => handleDelete(tuition?._id)}
@@ -106,6 +132,14 @@ const TuitionsDataRow = ({ tuition, refetch }) => {
         >
           <FaTrash size={20} />
         </button>
+
+        {/* Modal */}
+        <ViewApplicationsModal
+          isOpen={isOpen}
+          closeModal={closeModal}
+          tuition={tuition}
+          refetch={refetch}
+        />
       </td>
     </tr>
   );

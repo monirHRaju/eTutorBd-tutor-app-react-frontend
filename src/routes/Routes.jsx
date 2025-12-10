@@ -16,6 +16,7 @@ import TuitionDetails from '../pages/TuitionDetails/TuitionDetails'
 import ManageTuitions from '../pages/Dashboard/Admin/ManageTuitions'
 import AdminRoute from './AdminRoute'
 import TutorApplications from '../pages/Dashboard/Tutor/ManageTutorApplications'
+import ManageMyTuitions from '../pages/Dashboard/Student/ManageMyTuitions'
 
 export const router = createBrowserRouter([
   {
@@ -78,6 +79,15 @@ export const router = createBrowserRouter([
           <AdminRoute>
             <ManageTuitions />
           </AdminRoute>
+        ),
+      },
+      
+      {
+        path: 'my-tuitions',
+        element: (
+          <PrivateRoute>
+            <ManageMyTuitions />
+          </PrivateRoute>
         ),
       },
 

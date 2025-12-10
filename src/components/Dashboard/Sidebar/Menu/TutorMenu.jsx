@@ -6,10 +6,11 @@ const TutorMenu = () => {
   return (
     <>
       <MenuItem icon={FaWpforms} label='My Applications' address='my-applications' />
+      <MenuItem icon={FaWpforms} label='Ongoing Tuitions' address='ongoing-tuitions' />
       <MenuItem
         icon={MdOutlineManageHistory}
-        label='Manage Payments'
-        address='manage-payments'
+        label='Revenue History'
+        address='revenue-history'
       />
       
     </>

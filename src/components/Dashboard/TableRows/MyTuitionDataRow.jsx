@@ -1,30 +1,29 @@
 import { FaTrash, FaUserCheck } from "react-icons/fa6";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-import useRole from "../../../hooks/useRole";
 import { Link } from "react-router";
 
 const MyTuitionDataRow = ({ application, refetch }) => {
   const axiosSecure = useAxiosSecure();
-  const role = useRole();
+  // const role = useRole();
 
-  const handleStatus = (status) => {
-    const statusData = { status };
-    axiosSecure
-      .patch(`/applications/${application._id}/status`, statusData)
-      .then((res) => {
-        if (res.data.modifiedCount) {
-          refetch();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: `Application status is set to ${status}.`,
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        }
-      });
-  };
+  // const handleStatus = (status) => {
+  //   const statusData = { status };
+  //   axiosSecure
+  //     .patch(`/applications/${application._id}/status`, statusData)
+  //     .then((res) => {
+  //       if (res.data.modifiedCount) {
+  //         refetch();
+  //         Swal.fire({
+  //           position: "top-end",
+  //           icon: "success",
+  //           title: `Application status is set to ${status}.`,
+  //           showConfirmButton: false,
+  //           timer: 2000,
+  //         });
+  //       }
+  //     });
+  // };
 
   const handleDelete = (applicationId) => {
     Swal.fire({
@@ -70,7 +69,7 @@ const MyTuitionDataRow = ({ application, refetch }) => {
         <p className="">{application.offerPrice}</p>
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      {/* <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <p
           className={
             application.status === "pending"
@@ -82,14 +81,14 @@ const MyTuitionDataRow = ({ application, refetch }) => {
         >
           {application?.status}
         </p>
-      </td>
+      </td> */}
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <p className="text-gray-900 ">{application.createdAt}</p>
       </td>
 
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         {/* update status button */}
-        {role === "admin" && (
+        {/* {role === "admin" && (
           <>
             {application?.status === "accepted" ? (
               <button
@@ -107,7 +106,7 @@ const MyTuitionDataRow = ({ application, refetch }) => {
               </button>
             )}
           </>
-        )}
+        )} */}
 
         <button
           onClick={() => handleDelete(application._id)}
