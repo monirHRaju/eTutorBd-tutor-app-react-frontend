@@ -1,10 +1,10 @@
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
-  const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure()
 
     const {data: applications= []} = useQuery({
         queryKey : ['applications', tuition._id],
@@ -15,6 +15,23 @@ const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
         }
         
     })
+    
+    const handlePayment = async (application) => {
+      const paymentInfo = {
+        offerPrice : application?.offerPrice,
+        subject : application?.subject,
+        tutorEmail : application?.tutorEmail,
+        tuitionId : application?.tuitionId,
+        budget : application?.budget,
+        studentName : application?.studentName,
+        
+      }
+      console.log(paymentInfo)
+      const res = await axiosSecure.post('/create-checkout-session', paymentInfo)
+
+     console.log(res.data.url);
+     window.location.assign(res.data.url) 
+    }
 
   return (
     <>
@@ -69,7 +86,7 @@ const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
                   <tbody>
 
                     {
-                        applications.map(application => <tr>
+                        applications.map(application => <tr key={application._id}>
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <Link to={`${import.meta.env.VITE_SITE_URL}/tutor-info/${application.tutorEmail}/email`} className="tooltip" data-tip="Click for more info"><p className="link ">{application.tutorName}</p></Link>
                       </td>
@@ -81,7 +98,7 @@ const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
                       
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                             <button
-                                type="submit"
+                                onClick={() => handlePayment(application)}
                                 className="cursor-pointer btn btn-secondary btn-sm"
                                 >
                             Accept & Pay

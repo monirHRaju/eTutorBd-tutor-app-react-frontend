@@ -17,6 +17,8 @@ import ManageTuitions from '../pages/Dashboard/Admin/ManageTuitions'
 import AdminRoute from './AdminRoute'
 import TutorApplications from '../pages/Dashboard/Tutor/ManageTutorApplications'
 import ManageMyTuitions from '../pages/Dashboard/Student/ManageMyTuitions'
+import PaymentSuccess from '../pages/Dashboard/Common/PaymentSuccess'
+import PaymentCancelled from '../pages/Dashboard/Common/PaymentCancelled'
 
 export const router = createBrowserRouter([
   {
@@ -99,6 +101,16 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: 'payment-success',
+        Component: PaymentSuccess
+      },
+      
+      {
+        path: 'payment-cancelled',
+        Component: PaymentCancelled
+      },
+
       
     ],
   },
