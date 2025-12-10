@@ -9,7 +9,9 @@ const OfferModal = ({ tuition, closeModal, isOpen, refetch }) => {
   const {
       studentName,
       budget,
+      district,
       studentId,
+      subject,
       studentEmail,
       _id: tuitionId,
     } = tuition;
@@ -21,6 +23,8 @@ const OfferModal = ({ tuition, closeModal, isOpen, refetch }) => {
     const offerPrice = e.target.offer.value;
 
     const applicationInfo = {
+      subject,
+      district,
       offerPrice,
       studentName,
       budget,

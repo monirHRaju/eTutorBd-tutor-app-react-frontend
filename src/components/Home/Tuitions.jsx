@@ -29,7 +29,7 @@ const Tuitions = () => {
         }
       </div>
     </Container>
-  );
+  ); 
 };
 
 export default Tuitions;

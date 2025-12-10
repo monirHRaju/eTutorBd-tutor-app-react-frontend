@@ -25,6 +25,7 @@ const TuitionsDataRow = ({ tuition, refetch }) => {
   };
 
   const handleDelete = (tuitionId) => {
+    
     Swal.fire({
       title: "Do you want to Delete?",
       showDenyButton: false,
@@ -33,23 +34,22 @@ const TuitionsDataRow = ({ tuition, refetch }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         //delete from mongo db
-        axiosSecure.delete(`/tuitions/${tuitionId}/delete`)
-      .then((res) => {
-        if (res.data.deletedCount) {
-          refetch();
+        axiosSecure.delete(`/tuitions/${tuitionId}/delete`).then((res) => {
+          if (res.data.deletedCount) {
+            refetch();
 
-          Swal.fire({
-            position: "top-end",
-            icon: "error",
-            title: `Tuition Deleted Success!.`,
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        }
-      });
-       
-      } 
+            Swal.fire({
+              position: "top-end",
+              icon: "error",
+              title: `Tuition Deleted Success!.`,
+              showConfirmButton: false,
+              timer: 2000,
+            });
+          }
+        });
+      }
     });
+  
   };
 
   return (
@@ -70,7 +70,11 @@ const TuitionsDataRow = ({ tuition, refetch }) => {
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <p
           className={
-            tuition?.status === "accepted" ? "text-success" : tuition.status === "pending" ? "text-warning" : "text-error"
+            tuition?.status === "accepted"
+              ? "text-success"
+              : tuition.status === "pending"
+              ? "text-warning"
+              : "text-error"
           }
         >
           {tuition?.status}

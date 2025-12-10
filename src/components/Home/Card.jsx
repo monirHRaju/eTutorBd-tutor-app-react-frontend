@@ -4,11 +4,11 @@ import { FaRegMoneyBill1 } from "react-icons/fa6";
 const Card = ({tuition}) => {
 
   return (
-    <Link
-      to={`/tuition-details/${tuition._id}`}
-      className='col-span-1 cursor-pointer group shadow-xl p-3 rounded-xl'
-    >
-      <div className='space-y-3'>
+    // <Link
+    //   to={`/tuition-details/${tuition._id}`}
+    //   className='col-span-1 cursor-pointer group shadow-xl p-3 rounded-xl'
+    // >
+      <div className='space-y-3 col-span-1 group shadow-xl p-3 rounded-xl'>
         
         <div className='font-semibold text-2xl text-primary'>{tuition.subject}</div>
         <div className='badge badge-primary'> {tuition.district}</div>
@@ -27,10 +27,10 @@ const Card = ({tuition}) => {
         </div>
 
         <div className='flex justify-center'>
-          <button className='btn btn-base-300'>View Details</button>
+          <Link to={`/tuition-details/${tuition._id}`}  className='btn btn-base-300'>View Details</Link>
         </div>
       </div>
-    </Link>
+    // </Link>
   )
 }
 
