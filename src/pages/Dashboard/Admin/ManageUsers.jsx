@@ -61,7 +61,9 @@ const ManageUsers = () => {
                 </thead>
                 <tbody>
                   {
-                    users.map((user) => <UserDataRow key={user._id} refetch={refetch} user={user}/>)
+                    users.length === 0 
+                    ? <tr className='flex justify-center p-6'><td className='text-center'>No data found</td></tr>
+                    : users.map((user) => <UserDataRow key={user._id} refetch={refetch} user={user}/>)
                   }
                   
                 </tbody>

@@ -77,7 +77,9 @@ const ManageTutorApplications = () => {
                 </thead>
                 <tbody>
                   {
-                    applications.map((application) => <MyTuitionDataRow key={application._id} refetch={refetch} application={application}/>)
+                    applications.length === 0 
+                    ? <tr className='flex justify-center p-6'><td className='text-center'>No data found</td></tr>
+                    : applications.map((application) => <MyTuitionDataRow key={application._id} refetch={refetch} application={application}/>)
                   }
                   
                 </tbody>

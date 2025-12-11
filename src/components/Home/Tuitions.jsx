@@ -13,7 +13,7 @@ const Tuitions = () => {
   const { data: tuitions = [] } = useQuery({
     queryKey: ["tuitions", user?.email],
     queryFn: async () => {
-      const {data} = await axiosInstance.get("/tuitions");
+      const {data} = await axiosInstance.get("/not-enrolled-accepted-tuitions");
 
       return data;
     },

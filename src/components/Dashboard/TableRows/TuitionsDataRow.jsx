@@ -1,9 +1,9 @@
-import { FaTrash, FaUserCheck } from "react-icons/fa6";
-import { TiUserDelete } from "react-icons/ti";
+import { FaTrash } from "react-icons/fa6";
+import { FaRegCheckSquare, FaRegWindowClose   } from "react-icons/fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useRole from "../../../hooks/useRole";
-import { FaEye } from "react-icons/fa";
+import { IoInformationCircleOutline } from "react-icons/io5"
 import ViewApplicationsModal from "../../Modal/ViewApplicationsModal";
 import { useState } from "react";
 
@@ -78,61 +78,84 @@ const TuitionsDataRow = ({ tuition, refetch }) => {
         <p
           className={
             tuition?.status === "accepted"
+              ? "text-info"
+              : tuition?.status === "rejected"
+              ? "text-error"
+              : tuition?.status === "enrolled"
               ? "text-success"
-              : tuition.status === "pending"
-              ? "text-warning"
+              : "text-warning"
+          }
+        >
+          {
+            tuition?.status === "accepted"
+              ? "Accepted"
+              : tuition?.status === "rejected"
+              ? "Rejected"
+              : tuition?.status === "enrolled"
+              ? "Enrolled"
+              : "Pending"
+        }
+        </p>
+      </td>
+      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+        <p
+          className={
+            tuition?.tutorEnrolled === true
+              ? "text-success"
               : "text-error"
           }
         >
-          {tuition?.status}
+          {tuition?.tutorEnrolled ? 'Enrolled' : 'Not enrolled' }
         </p>
       </td>
 
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        {/* update status button */}
         
+        {/* see application */}  
+
+        {/* view tuition*/}
+        {
+          role === 'student' && <button
+         onClick={() => setIsOpen(true)}
+          className="btn btn-info btn-sm ml-3"
+        >
+          <IoInformationCircleOutline size={20} />
+        </button>
+        }
+        
+        {/* update status button */}
         {
           role === 'admin' && <>
             {tuition?.status === "accepted" ? (
           <button
             onClick={() => handleStatus("rejected")}
-            className="btn btn-error btn-sm ml-3"
+            className="btn btn-warning btn-sm ml-3 tooltip"
+            data-tip="Reject Tuition"
           >
-            <TiUserDelete size={20} />
+            <FaRegWindowClose size={20} />
           </button>
         ) : (
           <button
+            data-tip="Accept Tuition"
             onClick={() => handleStatus("accepted")}
-            className="btn btn-success btn-sm ml-3"
+            className="btn btn-success btn-sm ml-3 tooltip"
           >
-            <FaUserCheck size={20} />
+            <FaRegCheckSquare  size={20} />
           </button>
         )}
           </>
           
           
         }
-        {/* see application */}
-        {/* update role modal */}
-        <span
-          onClick={() => setIsOpen(true)}
-          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'
-        >
-          <span
-            aria-hidden='true'
-            className='absolute inset-0 bg-green-200 opacity-50 rounded-full'
-          ></span>
-          <span className='relative'>View Applications</span>
-        </span>
-        
         {/* delete tuition*/}
         <button
+          data-tip="Delete Tuition" 
           onClick={() => handleDelete(tuition?._id)}
-          className="btn btn-error btn-sm ml-3"
+          className="btn btn-error btn-sm ml-3 tooltip"
         >
           <FaTrash size={20} />
         </button>
-
+          
         {/* Modal */}
         <ViewApplicationsModal
           isOpen={isOpen}

@@ -16,7 +16,7 @@ import StudentMenu from './Menu/StudentMenu'
 import TutorMenu from './Menu/TutorMenu'
 
 const Sidebar = () => {
-  const { logOut } = useAuth()
+  const { user, logOut } = useAuth()
   const [isActive, setActive] = useState(false)
   const {role} = useRole()
 
@@ -32,7 +32,7 @@ const Sidebar = () => {
         <div>
           <div className='block cursor-pointer p-4 font-bold'>
             <Link to='/'>
-              <img src={logo} alt='logo' width='40' height='40' />
+              <img src={user?.photoURL || logo} alt='logo' width='40' height='40' />
             </Link>
           </div>
         </div>
@@ -56,10 +56,18 @@ const Sidebar = () => {
           <div>
             {/* Logo */}
             <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center mx-auto'>
-              <Link to='/' className='flex gap-3 items-center font-semibold text-white'>
-                <img src={logo} alt='logo' width='60' height='60' />
-                <h3 className='text-2xl'>eTutor BD</h3>
-              </Link>
+              <span className='flex gap-3 items-center font-semibold text-white'>
+                <img src={user?.photoURL || logo} alt='logo' width='60' height='60' />
+                <div>
+                  <Link to={'/'}>
+                  <h3 className='text-2xl'>eTutor BD</h3>
+                  <p>{user?.displayName}</p>
+                  <p>{user?.email}</p>
+                  </Link>
+                  
+                  <span onClick={() => logOut()} className='link'>Logout</span>
+                </div>
+              </span>
             </div>
           </div>
 

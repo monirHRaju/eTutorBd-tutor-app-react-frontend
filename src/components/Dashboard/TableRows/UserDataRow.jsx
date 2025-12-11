@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import UpdateUserRoleModal from '../../Modal/UpdateUserRoleModal'
-import { FaUserCheck } from 'react-icons/fa6'
+import { FaTrash, FaUserCheck } from 'react-icons/fa6'
 import useAxiosSecure from '../../../hooks/useAxiosSecure'
 import Swal from 'sweetalert2'
 
@@ -24,10 +24,40 @@ const UserDataRow = ({user, refetch}) => {
                 showConfirmButton: false,
                 timer: 2000
             });
-            console.log('status updated ', status );
+            
           }
         })
   }
+
+    const handleDelete = (userId) => {
+      
+      Swal.fire({
+        title: `Are you sure to Delete User?`,
+        showDenyButton: false,
+        showCancelButton: true,
+        confirmButtonText: "Yes, Delete",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          //delete from mongo db
+          axiosSecure.delete(`/users/${userId}/delete`).then((res) => {
+            if (res.data.deletedCount) {
+              refetch();
+  
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: `User Deleted Success!.`,
+                showConfirmButton: false,
+                timer: 2000,
+              });
+            }
+          });
+        }
+      });
+    
+    };
+  
+
   return (
     <tr>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
@@ -48,7 +78,7 @@ const UserDataRow = ({user, refetch}) => {
         {/* update status button */}
         {
           user?.status === 'accepted'
-          ? <button onClick={()=> handleStatus('rejected')} className='btn btn-error btn-sm ml-3'><FaUserCheck size={20} /></button>
+          ? <button onClick={()=> handleStatus('rejected')} className='btn btn-warning btn-sm ml-3'><FaUserCheck size={20} /></button>
           : <button onClick={()=> handleStatus('accepted')} className='btn btn-success btn-sm ml-3'><FaUserCheck size={20} /></button>
         }
         
@@ -65,6 +95,16 @@ const UserDataRow = ({user, refetch}) => {
           ></span>
           <span className='relative'>Update Role</span>
         </span>
+
+        {/* delete tuition*/}
+                <button
+                  data-tip="Delete User" 
+                  onClick={() => handleDelete(user?._id)}
+                  className="btn btn-error btn-sm ml-3 tooltip"
+                >
+                  <FaTrash size={20} />
+                </button>
+
         {/* Modal */}
         <UpdateUserRoleModal
           isOpen={isOpen}
