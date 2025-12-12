@@ -1,19 +1,22 @@
 import Container from "../Container";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import logo from "../../../../public/eLogo.png";
 import useAuth from "../../../hooks/useAuth";
+import MyNavLink from "../../Home/MyNavLink";
 const Navbar = () => {
   const { user, logOut } = useAuth();
 
   const navLinks = (
     <>
-      <li><Link to={"/"}>Home</Link></li>
-      <li><Link to={"/add-tuition"}>Add Tution</Link></li>
-      <li><Link to={"/tuitions"}>Tutions</Link></li>
-      <li><Link to={"/tutors"}>Tutors</Link></li>
-      <li><Link to={"/contact"}>Contact</Link></li>
-      <li><Link to={"/profile"}>Profile</Link></li>
-      <li><Link to={"/dashboard"}>Dashboard</Link></li>
+      {/* <li><NavLink to={"/"}>Home</NavLink></li> */}
+
+      <li><MyNavLink to={"/"} className={''}>Home</MyNavLink></li>
+      <li><MyNavLink to={"/add-tuition"}>Add Tuition</MyNavLink></li>
+      <li><MyNavLink to={"/tuitions"}>All Tuitions</MyNavLink></li>
+      <li><MyNavLink to={"/tutors"}>Tutors</MyNavLink></li>
+      <li><MyNavLink to={"/contact"}>Contact</MyNavLink></li>
+      <li><MyNavLink to={"/profile"}>Profile</MyNavLink></li>
+      <li><MyNavLink to={"/dashboard"}>Dashboard</MyNavLink></li>
     </>
   );
   return (

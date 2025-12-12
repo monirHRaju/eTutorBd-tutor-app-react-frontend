@@ -7,7 +7,7 @@ import { TbFidgetSpinner } from 'react-icons/tb'
 import { useForm } from 'react-hook-form'
 
 const Login = () => {
-  const { signInUser, signInGoogle, loading, user, setLoading } = useAuth()
+  const { signInUser, signInGoogle, loading, user } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
   const {
@@ -43,7 +43,7 @@ const Login = () => {
         console.log(res.user)
 
         toast.success('Login Successful')
-        navigate('/')
+        location?.state || '/'
       })
       .catch(err => {
         toast.error(err?.message)

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import UpdateUserRoleModal from '../../Modal/UpdateUserRoleModal'
 import { FaTrash, FaUserCheck } from 'react-icons/fa6'
+import { FaUserAltSlash } from 'react-icons/fa'
 import useAxiosSecure from '../../../hooks/useAxiosSecure'
 import Swal from 'sweetalert2'
 
@@ -75,15 +76,6 @@ const UserDataRow = ({user, refetch}) => {
       </td>
 
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        {/* update status button */}
-        {
-          user?.status === 'accepted'
-          ? <button onClick={()=> handleStatus('rejected')} className='btn btn-warning btn-sm ml-3'><FaUserCheck size={20} /></button>
-          : <button onClick={()=> handleStatus('accepted')} className='btn btn-success btn-sm ml-3'><FaUserCheck size={20} /></button>
-        }
-        
-        
-
         {/* update role modal */}
         <span
           onClick={() => setIsOpen(true)}
@@ -95,7 +87,13 @@ const UserDataRow = ({user, refetch}) => {
           ></span>
           <span className='relative'>Update Role</span>
         </span>
-
+        
+        {/* update status button */}
+        {
+          user?.status === 'accepted'
+          ? <button onClick={()=> handleStatus('rejected')} data-tip="Reject User" className='btn tooltip btn-warning btn-sm ml-3'><FaUserAltSlash size={20} /></button>
+          : <button onClick={()=> handleStatus('accepted')} data-tip="Accept User" className='btn tooltip btn-success btn-sm ml-3'><FaUserCheck size={20} /></button>
+        }
         {/* delete tuition*/}
                 <button
                   data-tip="Delete User" 
@@ -104,6 +102,9 @@ const UserDataRow = ({user, refetch}) => {
                 >
                   <FaTrash size={20} />
                 </button>
+
+
+        
 
         {/* Modal */}
         <UpdateUserRoleModal

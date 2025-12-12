@@ -34,7 +34,7 @@ const PaymentSuccess = () => {
       </div>
       <div className="border py-3 px-10 border-gray-300 h-20 bg-gray-100 rounded-2xl my-10">
         <p className="text-gray-500">Amount Paid : <span className="text-black">$100.00</span></p>
-        <p className="text-gray-500">Transaction Id : <span className="text-black">85412145155</span></p>
+        <p className="text-gray-500">Transaction Id : <span className="text-black">{sessionId}</span></p>
       </div>
     </div>
   );

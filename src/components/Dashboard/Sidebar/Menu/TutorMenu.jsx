@@ -1,6 +1,7 @@
 import { FaWpforms } from "react-icons/fa"
 import MenuItem from './MenuItem'
 import { MdOutlineManageHistory } from 'react-icons/md'
+import { LuMessageSquareDot  } from 'react-icons/lu'
 const TutorMenu = () => {
 
   return (
@@ -12,7 +13,7 @@ const TutorMenu = () => {
         label='Revenue History'
         address='revenue-history'
       />
-      
+      <MenuItem icon={LuMessageSquareDot} label='Messages' address='messages' />
     </>
   )
 }

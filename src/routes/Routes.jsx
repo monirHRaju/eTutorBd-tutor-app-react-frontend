@@ -19,6 +19,8 @@ import TutorApplications from '../pages/Dashboard/Tutor/ManageTutorApplications'
 import ManageMyTuitions from '../pages/Dashboard/Student/ManageMyTuitions'
 import PaymentSuccess from '../pages/Dashboard/Common/PaymentSuccess'
 import PaymentCancelled from '../pages/Dashboard/Common/PaymentCancelled'
+import PostTuition from '../pages/Dashboard/Student/PostTuition'
+import Tutors from '../pages/Tutors/Tutors'
 
 export const router = createBrowserRouter([
   {
@@ -43,9 +45,14 @@ export const router = createBrowserRouter([
         element: <TuitionDetails></TuitionDetails>
       },
       {
-        path: 'all-tuitions',
+        path: 'tuitions',
         element: <AllTuitions></AllTuitions> 
-      }
+      },
+      {
+        path: 'tutors',
+        Component: Tutors
+      },
+
     ],
   },
   { path: '/login', element: <Login /> },
@@ -89,6 +96,15 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <ManageMyTuitions />
+          </PrivateRoute>
+        ),
+      },
+      
+      {
+        path: 'post-tuition',
+        element: (
+          <PrivateRoute>
+            <PostTuition />
           </PrivateRoute>
         ),
       },

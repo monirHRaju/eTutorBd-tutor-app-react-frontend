@@ -3,14 +3,19 @@ import useAuth from '../hooks/useAuth';
 import useRole from '../hooks/useRole';
 import LoadingSpinner from '../components/Shared/LoadingSpinner';
 import Forbidden from '../components/Shared/Forbidden';
+import { Navigate } from 'react-router';
+
 
 const AdminRoute = ({children}) => {
-    const {user, loading} = useAuth()
+    const {loading} = useAuth()
     const {isLoading, role} = useRole()
+
 
     if(loading || isLoading) return <LoadingSpinner />
 
-    if(role !== 'admin') return <Forbidden />
+    if (role !== 'admin') {
+            return <Navigate to="/login"></Navigate>
+        }
 
     return children
 };
