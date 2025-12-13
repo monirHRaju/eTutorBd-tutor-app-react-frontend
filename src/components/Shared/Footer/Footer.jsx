@@ -17,7 +17,7 @@ const Footer = () => {
           <p>
             eTutor BD
             <br />
-            Providing reliable tech since 1992
+            eTutorBD is a platform where parents, students and tutors can easily connect with each other. We provide qualified Home/Online tutors to help your child with studies and helping them perform better in exams. 
           </p>
         </aside>
         <nav>

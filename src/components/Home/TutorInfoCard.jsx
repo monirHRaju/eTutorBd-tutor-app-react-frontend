@@ -1,17 +1,9 @@
 import React from "react";
+import { Link } from "react-router";
 
 
 export default function TutorInfoCard({ tutor }) {
-  // const {
-  //   avatar,
-  //   name = "Noah Thompson",
-  //   role = "Product Designer",
-  //   tagline = "who focuses on simplicity & usability.",
-  //   likes = "72.9K",
-  //   posts = "828",
-  //   views = "342.9K",
-  //   location = "Barishal",
-  // } = tutor;
+
 
   return (
     <div className="mx-auto">
@@ -60,7 +52,7 @@ export default function TutorInfoCard({ tutor }) {
 
           <div className="mt-3 flex items-center gap-3">
             <button className="btn btn-sm">Message</button>
-            <button className="btn btn-outline btn-sm">Info</button>
+            <Link to={'tutor-profile'} className="btn btn-outline btn-sm">Info</Link>
             <div className="text-sm text-muted ml-2">{tutor?.district}</div>
           </div>
         </div>

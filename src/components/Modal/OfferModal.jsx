@@ -32,7 +32,8 @@ const OfferModal = ({ tuition, closeModal, isOpen, refetch }) => {
       studentEmail,
       tuitionId,
       tutorName: user?.displayName,
-      tutorEmail: user?.email
+      tutorEmail: user?.email,
+      status: 'pending'
     };
     axiosInstance.post("/applications", applicationInfo)
       .then((res) => {

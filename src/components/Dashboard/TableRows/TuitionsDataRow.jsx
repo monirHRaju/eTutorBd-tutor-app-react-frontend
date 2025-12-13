@@ -65,7 +65,7 @@ const TuitionsDataRow = ({ tuition, refetch }) => {
         <p className="text-gray-900 ">{tuition?.subject}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 ">{tuition?.class}</p>
+        <p className="text-gray-900 ">{tuition?.className}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <p className="">{tuition?.district}</p>

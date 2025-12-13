@@ -2,11 +2,12 @@ import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
   const axiosSecure = useAxiosSecure()
 
-    const {data: applications= []} = useQuery({
+    const {data: applications= [], refetch:appsRefetch} = useQuery({
         queryKey : ['applications', tuition._id],
         queryFn: async() => {
             const {data} = await axiosSecure.get(`/applications/${tuition._id}`)
@@ -15,7 +16,24 @@ const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
         }
         
     })
-    
+      const handleStatus = (status, applicationId) => {
+        const statusData = { status };
+        axiosSecure
+          .patch(`/applications/${applicationId}/status`, statusData)
+          .then((res) => {
+            if (res.data.modifiedCount) {
+              appsRefetch()
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: `Application status is set to ${status}.`,
+                showConfirmButton: false,
+                timer: 2000,
+              });
+            }
+          });
+      }
+
     const handlePayment = async (application) => {
       const paymentInfo = {
         offerPrice : application?.offerPrice,
@@ -29,7 +47,7 @@ const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
       console.log(paymentInfo)
       const res = await axiosSecure.post('/create-checkout-session', paymentInfo)
 
-     console.log(res.data.url);
+    //  console.log(res.data.url);
      window.location.assign(res.data.url) 
     }
 
@@ -77,6 +95,13 @@ const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
                         scope="col"
                         className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
                       >
+                        Status
+                      </th>                      
+                        
+                      <th
+                        scope="col"
+                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                      >
                         Action
                       </th>                      
 
@@ -95,6 +120,10 @@ const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p className="text-gray-900 ">{application.offerPrice}</p>
                       </td>
+
+                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p className="text-gray-900 ">{application.status}</p>
+                      </td>
                       
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                             <button
@@ -105,7 +134,7 @@ const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
                             </button>
                             
                             <button
-                                
+                                onClick={() => handleStatus("rejected", application._id)}
                                 className="cursor-pointer btn btn-error btn-sm"
                                 >
                             Reject

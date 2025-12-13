@@ -21,6 +21,7 @@ import PaymentSuccess from '../pages/Dashboard/Common/PaymentSuccess'
 import PaymentCancelled from '../pages/Dashboard/Common/PaymentCancelled'
 import PostTuition from '../pages/Dashboard/Student/PostTuition'
 import Tutors from '../pages/Tutors/Tutors'
+import TutorProfile from '../pages/TutorProfile/TutorProfile'
 
 export const router = createBrowserRouter([
   {
@@ -33,8 +34,8 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: 'profile',
-        element: <PrivateRoute><ProfilePage></ProfilePage> </PrivateRoute>
+        path: 'tutors/tutor-profile',
+        element: <TutorProfile></TutorProfile>
       },
       {
         path: 'add-tuition',

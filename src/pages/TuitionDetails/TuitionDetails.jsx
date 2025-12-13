@@ -5,10 +5,12 @@ import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router'
 import { useQuery } from '@tanstack/react-query'
 import useAxios from '../../hooks/useAxios'
-import { FaClock, FaLeftLong } from 'react-icons/fa6'
+import { FaLeftLong } from 'react-icons/fa6'
 import useAuth from '../../hooks/useAuth'
+import { FaMapMarkerAlt, FaUserGraduate, FaBook, FaCalendarAlt, FaClock, FaVenusMars, FaUsers, FaMoneyBillWave, FaSignInAlt } from "react-icons/fa";
 
-const TuitionDetails = () => {
+
+export default function TuitionDetails() {
   const [isOpen, setIsOpen] = useState(false)
   const axiosInstance = useAxios()
   const {user} = useAuth()
@@ -24,18 +26,6 @@ const TuitionDetails = () => {
     },
   });
 
-  
-//   const { data: student = [] } = useQuery({
-//     queryKey: ["student", tuition.studentEmail],
-//     queryFn: async () => {
-//       const { data } = await axiosInstance.get(`/tuitions/${tuition.studentEmail}/student`)
-
-//       return data;
-//     },
-//   });
-
-//   console.log(student)
-
   const closeModal = () => {
     refetch()
     setIsOpen(false)
@@ -44,65 +34,80 @@ const TuitionDetails = () => {
   const goBack = () => {
     navigate(-1); 
   }
+  
+  const {
+    subject, medium, studentGender, className,requirements, district, location, tutorGender, budget, schedule, student, studentName, studentEmail, studentId, status, createdAt, jobId
+  } = tuition;
+
   return (
-    <Container>
-      <div className='mx-auto w-full gap-12'>
-        
-        <div className='md:gap-10 flex-1 my-20'>
-          {/* Plant Info */}
-          <button onClick={goBack} className='flex items-center gap-3 shadow-md px-3 py-2 hover:bg-red-100' >
-            <FaLeftLong></FaLeftLong>
-            Go Back</button>
-          
-          <h2 className='text-3xl font-bold'>Tuition Needed for : <span className='text-primary'>{tuition.subject}</span></h2>
-            <p className='text-2xl text-secondary font-semibold'>{tuition.district} </p>
-            <p className='font-semibold'>Address: {tuition.location}</p>
-          <hr className='my-6' />
-          <div
-            className='text-lg font-light text-neutral-500 flex items-center gap-5'>
-            Schedule: <FaClock></FaClock>
-            {tuition.schedule}
-          </div>
-          <hr className='my-6' />
+    <div className="max-w-5xl mx-auto p-4">
+      <div className="card bg-base-100 shadow-xl rounded-2xl">
+        <div className="card-body gap-6">
+          {/* Header */}
+          <div className="text-center">
+            <h1 className="text-2xl md:text-3xl font-bold text-primary">
+              {subject}
+            </h1>
+            <p className="text-sm text-gray-500 mt-1">
+              Job ID : {jobId} · Posted at : {createdAt}
+            </p>
 
-          <div
-            className='
-                text-xl 
-                font-semibold 
-                flex 
-                flex-row 
-                items-center
-                gap-2
-              '
-          >
-            {/* <div>
-                <img src={student.photoURL} alt="" />
-               <p>Student Name : {student.name}</p>
-            </div> */}
-
-
-            
-          </div>
-          
-          <hr className='my-6' />
-          <div className='flex justify-between'>
-            <p className='font-bold text-3xl text-gray-500'>Budget: {tuition.budget}$</p>
-            <div>
-              {
-                user 
-                ? <Button onClick={() => setIsOpen(true)} label='Apply as Tutor' />
-                : <Link to={'/login'} className='btn btn-primary'>Apply as Tutor</Link>
-              }
-              
+            <div className="flex justify-center items-center gap-2 mt-3 text-primary">
+              <FaMapMarkerAlt />
+              <span className="font-semibold">{location}, {district}</span>
             </div>
           </div>
-          <hr className='my-6' />
 
-          <OfferModal tuition={tuition} refetch={refetch} closeModal={closeModal} isOpen={isOpen} />
+          {/* Details Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+            <InfoItem icon={<FaBook />} label="Medium" value={medium} />
+            <InfoItem icon={<FaUserGraduate />} label="Class" value={className} />
+            <InfoItem icon={<FaVenusMars />} label="Student Gender" value={studentGender} />
+
+            <InfoItem icon={<FaUserGraduate />} label="Preferred Tutor" value={tutorGender} />
+            <InfoItem icon={<FaClock />} label="Tutoring Time" value={schedule} />
+
+            <InfoItem
+              icon={<FaBook />}
+              label="Subject"
+              value={<span className="badge badge-success">{subject}</span>}
+            />
+            <InfoItem
+              icon={<FaMoneyBillWave />}
+              label="Salary"
+              value={<span className="text-primary font-semibold">$ {budget}</span>}
+            />
+          </div>
+
+          {/* Requirements */}
+          <div className="border-t pt-4">
+            <h3 className="font-semibold mb-1">Other Requirements :</h3>
+            <p className="text-sm text-gray-600">{requirements}</p>
+          </div>
+
+          {/* Action */}
+          <div className="flex justify-end">
+            {
+              user 
+              ? <Button onClick={() => setIsOpen(true)} className="btn btn-outline btn-primary gap-2" label='Apply as Tutor' />
+              : <Link to={'/login'} className='btn btn-primary'>Apply as Tutor</Link>
+            }
+          </div>
         </div>
+        <OfferModal tuition={tuition} refetch={refetch} closeModal={closeModal} isOpen={isOpen} />
       </div>
-    </Container>
-  )
+    </div>
+  );
 }
 
-export default TuitionDetails
+function InfoItem({ icon, label, value }) {
+  return (
+    <div className="flex gap-3 items-start">
+      <div className="text-primary mt-1">{icon}</div>
+      <div>
+        <p className="text-gray-500">{label} :</p>
+        <p className="font-medium">{value}</p>
+      </div>
+    </div>
+  );
+}
