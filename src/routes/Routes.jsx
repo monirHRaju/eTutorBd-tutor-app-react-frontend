@@ -22,6 +22,9 @@ import PaymentCancelled from '../pages/Dashboard/Common/PaymentCancelled'
 import PostTuition from '../pages/Dashboard/Student/PostTuition'
 import Tutors from '../pages/Tutors/Tutors'
 import TutorProfile from '../pages/TutorProfile/TutorProfile'
+import Payments from '../pages/Dashboard/Common/Payments'
+import TutorPayments from '../pages/Dashboard/Common/TutorPayments'
+import AllPayments from '../pages/Dashboard/Common/AllPayments'
 
 export const router = createBrowserRouter([
   {
@@ -126,6 +129,21 @@ export const router = createBrowserRouter([
       {
         path: 'payment-cancelled',
         Component: PaymentCancelled
+      },
+      
+      {
+        path: 'payments',
+        Component: Payments
+      },
+      
+      {
+        path: 'tutor-payments',
+        Component: TutorPayments
+      },
+      
+      {
+        path: 'all-payments',
+        Component: AllPayments
       },
 
       

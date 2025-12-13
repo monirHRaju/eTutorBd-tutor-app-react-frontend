@@ -5,51 +5,53 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
 const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
 
-    const {data: applications= [], refetch:appsRefetch} = useQuery({
-        queryKey : ['applications', tuition._id],
-        queryFn: async() => {
-            const {data} = await axiosSecure.get(`/applications/${tuition._id}`)
-            
-            return data;
-        }
-        
-    })
-      const handleStatus = (status, applicationId) => {
-        const statusData = { status };
-        axiosSecure
-          .patch(`/applications/${applicationId}/status`, statusData)
-          .then((res) => {
-            if (res.data.modifiedCount) {
-              appsRefetch()
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: `Application status is set to ${status}.`,
-                showConfirmButton: false,
-                timer: 2000,
-              });
-            }
+  const { data: applications = [], refetch: appsRefetch } = useQuery({
+    queryKey: ["applications", tuition._id],
+    queryFn: async () => {
+      const { data } = await axiosSecure.get(`/applications/${tuition._id}`);
+
+      return data;
+    },
+  });
+  const handleStatus = (status, applicationId) => {
+    const statusData = { status };
+    axiosSecure
+      .patch(`/applications/${applicationId}/status`, statusData)
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          appsRefetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `Application status is set to ${status}.`,
+            showConfirmButton: false,
+            timer: 2000,
           });
-      }
+          closeModal();
+        }
+      });
+  };
 
-    const handlePayment = async (application) => {
-      const paymentInfo = {
-        offerPrice : application?.offerPrice,
-        subject : application?.subject,
-        tutorEmail : application?.tutorEmail,
-        tuitionId : application?.tuitionId,
-        budget : application?.budget,
-        studentName : application?.studentName,
-        
-      }
-      console.log(paymentInfo)
-      const res = await axiosSecure.post('/create-checkout-session', paymentInfo)
+  const handlePayment = async (application) => {
+    const paymentInfo = {
+      subject: application?.subject,
+      tutorEmail: application?.tutorEmail,
+      studentId: application?.studentId,
+      tuitionId: application?.tuitionId,
+      budget: application?.budget,
+      tutorName: application?.tutorName,
+      studentName: application?.studentName,
+      studentEmail: application?.studentEmail,
+      offerPrice: application?.offerPrice,
+    };
+    console.log(paymentInfo);
+    const res = await axiosSecure.post("/create-checkout-session", paymentInfo);
 
     //  console.log(res.data.url);
-     window.location.assign(res.data.url) 
-    }
+    window.location.assign(res.data.url);
+  };
 
   return (
     <>
@@ -69,7 +71,8 @@ const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
                 as="h3"
                 className="text-base/7 font-medium text-black"
               >
-                All Applications for <span className="text-primary">{tuition.subject}</span>
+                All Applications for{" "}
+                <span className="text-primary">{tuition.subject}</span>
               </DialogTitle>
 
               <div>
@@ -83,76 +86,90 @@ const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
                         Tutor Name
                       </th>
 
-                   
                       <th
                         scope="col"
                         className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
                       >
                         Tutor Offer
-                      </th>                      
-                        
+                      </th>
+
                       <th
                         scope="col"
                         className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
                       >
                         Status
-                      </th>                      
-                        
+                      </th>
+
                       <th
                         scope="col"
                         className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
                       >
                         Action
-                      </th>                      
-
-                      
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
+                    {applications.map((application) => (
+                      <tr key={application._id}>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <Link
+                            to={`${import.meta.env.VITE_SITE_URL}/tutor-info/${
+                              application.tutorEmail
+                            }/email`}
+                            className="tooltip"
+                            data-tip="Click for more info"
+                          >
+                            <p className="link ">{application.tutorName}</p>
+                          </Link>
+                        </td>
 
-                    {
-                        applications.map(application => <tr key={application._id}>
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <Link to={`${import.meta.env.VITE_SITE_URL}/tutor-info/${application.tutorEmail}/email`} className="tooltip" data-tip="Click for more info"><p className="link ">{application.tutorName}</p></Link>
-                      </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p className="text-gray-900 ">
+                            {application.offerPrice}
+                          </p>
+                        </td>
 
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p
+                            className={
+                              application?.status === "enrolled"
+                                ? "text-info"
+                                : application?.status === "rejected"
+                                ? "text-error"
+                                : "text-warning"
+                            }
+                          >
+                            {application?.status === "enrolled"
+                              ? "Accepted"
+                              : application?.status === "rejected"
+                              ? "Rejected"
+                              : "Pending"}
+                          </p>
+                        </td>
 
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p className="text-gray-900 ">{application.offerPrice}</p>
-                      </td>
-
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p className="text-gray-900 ">{application.status}</p>
-                      </td>
-                      
-                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <button
-                                onClick={() => handlePayment(application)}
-                                className="cursor-pointer btn btn-secondary btn-sm"
-                                >
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <button
+                            onClick={() => handlePayment(application)}
+                            className="cursor-pointer btn btn-secondary btn-sm"
+                          >
                             Accept & Pay
-                            </button>
-                            
-                            <button
-                                onClick={() => handleStatus("rejected", application._id)}
-                                className="cursor-pointer btn btn-error btn-sm"
-                                >
+                          </button>
+
+                          <button
+                            onClick={() =>
+                              handleStatus("rejected", application._id)
+                            }
+                            className="cursor-pointer btn btn-error btn-sm"
+                          >
                             Reject
-                            </button>
-
-                      </td>
-                      
-
-                    </tr>)
-                    }
-
-
-                    
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
               <div className="flex mt-2 justify-around">
-                
                 <button
                   type="button"
                   className="cursor-pointer inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"

@@ -1,16 +1,17 @@
 import { useQuery } from '@tanstack/react-query'
-import UserDataRow from '../../../components/Dashboard/TableRows/UserDataRow'
-import useAuth from '../../../hooks/useAuth'
 import useAxios from '../../../hooks/useAxios'
+import useAuth from '../../../hooks/useAuth'
+import PaymentsDataRow from '../../../components/Dashboard/TableRows/PaymentsDataRow'
 
-const ManageUsers = () => {
+const TutorPayments = () => {
   const axiosInstance = useAxios()
   const {user} = useAuth()
+
   
-  const {data:users=[], refetch} = useQuery({
-    queryKey: ['users', user?.email],
+  const {data:payments=[], refetch} = useQuery({
+    queryKey: ['student-payments', user?.email],
     queryFn: async()  => {
-      const {data} = await axiosInstance.get(`/users?email=${user.email}`)
+      const {data} = await axiosInstance.get(`/tutor-payments?email=${user?.email}`)
       return data
     }
   })
@@ -28,18 +29,44 @@ const ManageUsers = () => {
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
-                      User
+                      Paid By
                     </th>
-                    
-                    
                     
                     <th
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
-                      Role
+                      Paid To
+                    </th>
+                    
+                    <th
+                      scope='col'
+                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                    >
+                      Paid To
+                    </th>
+                    
+                    <th
+                      scope='col'
+                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                    >
+                      tuitionId
+                    </th>
+                    
+                    <th
+                      scope='col'
+                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                    >
+                      Amount
                     </th>
                     <th
+                      scope='col'
+                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                    >
+                      Transaction Id
+                    </th>
+                   
+                   <th
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
@@ -50,15 +77,15 @@ const ManageUsers = () => {
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
-                      Action
+                      Payment Date
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   {
-                    users.length === 0 
+                    payments.length === 0 
                     ? <tr className='flex justify-center p-6'><td className='text-center'>No data found</td></tr>
-                    : users.map((user) => <UserDataRow key={user._id} refetch={refetch} user={user}/>)
+                    : payments.map((payment) => <PaymentsDataRow key={payment._id} refetch={refetch} payment={payment}/>)
                   }
                   
                 </tbody>
@@ -71,4 +98,4 @@ const ManageUsers = () => {
   )
 }
 
-export default ManageUsers
+export default TutorPayments

@@ -1,4 +1,3 @@
-import Container from '../../components/Shared/Container'
 import Button from '../../components/Shared/Button/Button'
 import OfferModal from '../../components/Modal/OfferModal'
 import { useState } from 'react'
@@ -7,13 +6,13 @@ import { useQuery } from '@tanstack/react-query'
 import useAxios from '../../hooks/useAxios'
 import { FaLeftLong } from 'react-icons/fa6'
 import useAuth from '../../hooks/useAuth'
-import { FaMapMarkerAlt, FaUserGraduate, FaBook, FaCalendarAlt, FaClock, FaVenusMars, FaUsers, FaMoneyBillWave, FaSignInAlt } from "react-icons/fa";
-
+import { FaMapMarkerAlt, FaUserGraduate, FaBook, FaClock, FaVenusMars, FaMoneyBillWave } from "react-icons/fa";
 
 export default function TuitionDetails() {
   const [isOpen, setIsOpen] = useState(false)
   const axiosInstance = useAxios()
   const {user} = useAuth()
+
 
   const {id} = useParams()
 
@@ -36,11 +35,15 @@ export default function TuitionDetails() {
   }
   
   const {
-    subject, medium, studentGender, className,requirements, district, location, tutorGender, budget, schedule, student, studentName, studentEmail, studentId, status, createdAt, jobId
+    subject, medium, studentGender, className,requirements, district, location, tutorGender, budget, schedule, createdAt, jobId
   } = tuition;
 
   return (
-    <div className="max-w-5xl mx-auto p-4">
+    <div className="max-w-5xl mx-auto p-4 mt-12">
+      <div onClick={goBack} className='flex gap-3 items-center w-25'>
+        <FaLeftLong />
+        <button> Back</button>
+      </div>
       <div className="card bg-base-100 shadow-xl rounded-2xl">
         <div className="card-body gap-6">
           {/* Header */}
@@ -94,7 +97,7 @@ export default function TuitionDetails() {
             }
           </div>
         </div>
-        <OfferModal tuition={tuition} refetch={refetch} closeModal={closeModal} isOpen={isOpen} />
+        <OfferModal  tuition={tuition} refetch={refetch} closeModal={closeModal} isOpen={isOpen} />
       </div>
     </div>
   );

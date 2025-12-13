@@ -2,10 +2,13 @@ import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import useAxios from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useRole from "../../hooks/useRole";
 
 const OfferModal = ({ tuition, closeModal, isOpen, refetch }) => {
   const axiosInstance = useAxios();
   const { user } = useAuth();
+  const {role} = useRole()
+
   const {
       studentName,
       budget,
@@ -21,6 +24,20 @@ const OfferModal = ({ tuition, closeModal, isOpen, refetch }) => {
   const handleSendOffer = (e) => {
     e.preventDefault();
     const offerPrice = e.target.offer.value;
+
+    if(role !== 'tutor'){
+      closeModal()
+      return (
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: `You must be a Tutor to apply this tuition.`,
+            showConfirmButton: false,
+            timer: 2000,
+          })
+        
+      )
+    }
 
     const applicationInfo = {
       subject,
@@ -45,7 +62,7 @@ const OfferModal = ({ tuition, closeModal, isOpen, refetch }) => {
             icon: "success",
             title: `Offer sent.`,
             showConfirmButton: false,
-            timer: 2000,
+            timer: 3000,
           });
           
           

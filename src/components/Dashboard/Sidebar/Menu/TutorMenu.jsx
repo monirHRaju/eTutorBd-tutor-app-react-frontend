@@ -11,7 +11,7 @@ const TutorMenu = () => {
       <MenuItem
         icon={MdOutlineManageHistory}
         label='Revenue History'
-        address='revenue-history'
+        address='tutor-payments'
       />
       <MenuItem icon={LuMessageSquareDot} label='Messages' address='messages' />
     </>

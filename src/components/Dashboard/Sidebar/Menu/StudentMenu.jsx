@@ -1,5 +1,5 @@
 import { BsFillHouseAddFill } from 'react-icons/bs'
-import { MdHomeWork, MdOutlineManageHistory } from 'react-icons/md'
+import { MdOutlineManageHistory } from 'react-icons/md'
 import MenuItem from './MenuItem'
 import { LuMessageSquareDot } from 'react-icons/lu'
 const StudentMenu = () => {
@@ -16,18 +16,13 @@ const StudentMenu = () => {
         address='post-tuition'
       />
       
-      <MenuItem
-        icon={MdOutlineManageHistory}
-        label='Applied Tutors'
-        address='applied-tutors'
-      />
       
       <MenuItem
         icon={MdOutlineManageHistory}
         label='Payments'
         address='payments'
       />
-      <MenuItem icon={LuMessageSquareDot} label='Messages' address='messages' />
+      {/* <MenuItem icon={LuMessageSquareDot} label='Messages' address='messages' /> */}
     </>
   )
 }

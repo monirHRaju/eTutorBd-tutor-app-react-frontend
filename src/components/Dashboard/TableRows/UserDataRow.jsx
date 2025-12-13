@@ -61,21 +61,31 @@ const UserDataRow = ({user, refetch}) => {
 
   return (
     <tr>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 '>{user?.name}</p>
-      </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 '>{user?.email}</p>
-      </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td>
+          <div className="flex items-center gap-3">
+            <div className="avatar">
+              <div className="mask mask-squircle h-12 w-12">
+                <img
+                  src={user?.photoURL}
+                  alt={user?.name} />
+              </div>
+            </div>
+            <div>
+              <div className="font-bold">{user?.name}</div>
+              <div className="text-sm opacity-50">{user?.email}</div>
+            </div>
+          </div>
+        </td>
+      
+      <td className='px-5 py-5'>
         <p className=''>{user?.role}</p>
       </td>
       
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td className='px-5 py-5'>
         <p className={user?.status==='pending'? 'text-warning' : user?.status === 'accepted' ? 'text-success' : 'text-error'}>{user?.status}</p>
       </td>
 
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td className='px-5 py-5'>
         {/* update role modal */}
         <span
           onClick={() => setIsOpen(true)}
