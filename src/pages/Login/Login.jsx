@@ -6,11 +6,14 @@ import { FcGoogle } from 'react-icons/fc'
 import { TbFidgetSpinner } from 'react-icons/tb'
 import { useForm } from 'react-hook-form'
 import { FaHome } from 'react-icons/fa'
+import useAxios from '../../hooks/useAxios'
+import Swal from 'sweetalert2'
 
 const Login = () => {
   const { signInUser, signInGoogle, loading, user, setLoading } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
+  const axiosInstance = useAxios()
   const {
       register,
       handleSubmit,
@@ -39,21 +42,37 @@ const Login = () => {
 
   // Handle Google Signin
   const handleGoogleSignIn = async () => {
-    
-      //User Registration using google
-      await signInGoogle()
-      .then((res) => {
-        console.log(res.user)
-        
-        toast.success('Login Successful')
-        navigate(from)
-      })
-      .catch(err => {
-        toast.error(err?.message)
-        // console.log(err.message)
-        navigate(from)
-      })
-  }
+      try {
+        const res = await signInGoogle();
+  
+        const userData = {
+          name: res.user.displayName,
+          email: res.user.email,
+          role: "student",
+          photoURL: res.user.photoURL,
+        };
+        setLoading(true)
+        const dbRes = await axiosInstance.post("/users", userData);
+        setLoading(false)
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Registration Successful!",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+  
+        navigate(from);
+      } catch (err) {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: err.message || "Registration Failed",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      }
+    };
 
   return (
     <div className='flex justify-center items-center min-h-screen bg-white'>

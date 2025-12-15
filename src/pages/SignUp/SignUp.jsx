@@ -62,90 +62,43 @@ const SignUp = () => {
                   showConfirmButton: false,
                   timer: 2000,
                 });
-              } else {
-                Swal.fire({
-                  position: "top-end",
-                  icon: "error",
-                  title: `You Are Already Registered, Please Login`,
-                  showConfirmButton: false,
-                  timer: 2000,
-                });
-              }
-              return;
+              } 
             })
             .catch((err) => {
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: `Failed Registration. ${err.message}`,
-                showConfirmButton: false,
-                timer: 2000,
-              });
-              return setLoading(false);
+              setLoading(false);
+              console.log(err)
             });
 
           //3. update profile with photo
           const updateProfile = {
             displayName: data.name,
             photoURL,
-          };
+          }
 
           updateUserProfile(updateProfile)
             .then(() => {
-              navigate(location.state || "/");
+              console.log('profile updated')
             })
             .catch((error) => console.log(error));
         });
+
+        navigate(from);
+
       })
       .catch((error) => {
-        toast.error(error.message);
+        const message = error.message
+        if(message === "Firebase: Error (auth/email-already-in-use)."){
+          toast.error(`Failed! You are already registered. Please login.`);
+          setLoading(false)
+          navigate('/login')
+        } else(
+          toast.error(`Registration Failed! ${error.message}`)
+        )
+
+        
       });
   };
 
-  // Handle Google Signin
-  // const handleGoogleSignIn = async () => {
-  //   //User Registration using google
-  //   signInGoogle()
-  //     .then((res) => {
-  //       console.log(res.user);
-  //       const userData = {
-  //         name: res.user.displayName,
-  //         email: res.user.email,
-  //         role: "student",
-  //         photoURL: res.user.photoURL,
-  //       };
-  //       axiosInstance
-  //         .post("/users", userData)
-  //         .then((res) => {
-  //           console.log("user data has been stored", res.data);
-  //           Swal.fire({
-  //             position: "top-end",
-  //             icon: "success",
-  //             title: `Registration Successful!`,
-  //             showConfirmButton: false,
-  //             timer: 2000,
-  //           });
-
-  //           navigate(from);
-  //         })
-  //         .catch((err) => {
-  //           Swal.fire({
-  //             position: "top-end",
-  //             icon: "success",
-  //             title: `Failed Registration. ${err.message}`,
-  //             showConfirmButton: false,
-  //             timer: 2000,
-  //           });
-  //           setLoading(false);
-  //           navigate(from);
-  //         });
-  //     })
-  //     .catch((err) => {
-  //       toast.error(err?.message);
-  //       // console.log(err.message)
-  //       navigate(from);
-  //     });
-  // };
 
   const handleGoogleSignIn = async () => {
     try {
