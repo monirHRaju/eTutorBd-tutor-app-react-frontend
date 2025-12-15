@@ -79,8 +79,8 @@ const PostTuition = () => {
                     {...register("subject", {
                       required: "subject is required",
                       minLength: {
-                        value: 4,
-                        message: "subject must at least 4 characters.",
+                        value: 3,
+                        message: "subject must at least 3 characters.",
                       },
                     })}
                     id="subject"
@@ -183,10 +183,6 @@ const PostTuition = () => {
                     type="text"
                     {...register("location", {
                       required: "Location is required",
-                      minLength: {
-                        value: 4,
-                        message: "Location must at least 4 characters.",
-                      },
                     })}
                     id="location"
                     placeholder="Enter Your Location Thana -> Area"

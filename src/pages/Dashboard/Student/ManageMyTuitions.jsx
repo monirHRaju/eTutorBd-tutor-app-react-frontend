@@ -15,8 +15,7 @@ const ManageMyTuitions = () => {
       return data
     }
   })
-    const useremail =user.email
-    console.log( { useremail, tuitions})
+    
   return (
     <>
       <div className='container mx-auto px-4 sm:px-8'>

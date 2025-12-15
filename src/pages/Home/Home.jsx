@@ -10,9 +10,9 @@ const Home = () => {
     <div>
       <Hero></Hero>
       <Satisfy></Satisfy>
-      <WhyChooseUs></WhyChooseUs>
       <Tuitions></Tuitions>
       <FeaturedTutors></FeaturedTutors>
+      <WhyChooseUs></WhyChooseUs>
       {/* More components */}
     </div>
   )

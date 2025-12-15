@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import Container from "../Shared/Container";
 import { motion } from "framer-motion";
 import TutorInfoCard from "./TutorInfoCard";
+import { Link } from "react-router";
 
 const FeaturedTutors = () => {
   const { user } = useAuth();
@@ -36,6 +37,9 @@ const FeaturedTutors = () => {
           {tutors.map((tutor, index) => (
             <TutorInfoCard key={index} tutor={tutor} />
           ))}
+        </div>
+        <div className="flex justify-center my-10">
+          <Link to={'/tutors'} className="btn btn-primary btn-lg">See All Tutors</Link>
         </div>
       </motion.div>
     </Container>

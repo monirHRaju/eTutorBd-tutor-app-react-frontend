@@ -5,9 +5,10 @@ import useAuth from '../../hooks/useAuth'
 import { FcGoogle } from 'react-icons/fc'
 import { TbFidgetSpinner } from 'react-icons/tb'
 import { useForm } from 'react-hook-form'
+import { FaHome } from 'react-icons/fa'
 
 const Login = () => {
-  const { signInUser, signInGoogle, loading, user } = useAuth()
+  const { signInUser, signInGoogle, loading, user, setLoading } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
   const {
@@ -15,22 +16,24 @@ const Login = () => {
       handleSubmit,
       formState: { errors },
     } = useForm();
-  const from = location.state || '/'
+  
+    const from = location?.state || '/dashboard'
 
   if (loading) return <LoadingSpinner />
-  if (user) return <Navigate to={from} replace={true} />
+  if (user) return <Navigate to={from} />
 
   // form submit handler
   const handleLogin = (data) => {
-        console.log('form data', data);
+        // console.log('form data', data);
         signInUser(data.email, data.password)
             .then(result => {
                 console.log(result.user)
-                navigate(location?.state || '/')
+                toast.success('Login Successful')
+                navigate(from)
             })
             .catch(error => {
-                console.log(error)
-                navigate('/login')
+                setLoading(false)
+                return toast.error(`Failed Login ${error.message}`)
             })
     }
 
@@ -41,13 +44,14 @@ const Login = () => {
       await signInGoogle()
       .then((res) => {
         console.log(res.user)
-
+        
         toast.success('Login Successful')
-        location?.state || '/'
+        navigate(from)
       })
       .catch(err => {
         toast.error(err?.message)
-        console.log(err.message)
+        // console.log(err.message)
+        navigate(from)
       })
   }
 
@@ -142,7 +146,7 @@ const Login = () => {
           <p>Continue with Google</p>
         </div>
         <p className='px-6 text-sm text-center text-gray-400'>
-          Don&apos;t have an account yet?{' '}
+          Don&apos;t have an account yet?
           <Link
             state={from}
             to='/signup'
@@ -151,6 +155,10 @@ const Login = () => {
             Sign up
           </Link>
           .
+        </p>
+        <p className='px-6 text-sm text-center text-gray-400'>
+          Or, Go to
+        <Link to={'/'} className='flex justify-center items-center text-blue-500 hover:cursor-pointer'><FaHome> </FaHome>&nbsp; Homepage</Link>
         </p>
       </div>
     </div>

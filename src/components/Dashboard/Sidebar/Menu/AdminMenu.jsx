@@ -15,7 +15,7 @@ const AdminMenu = () => {
         label='Payments'
         address='all-payments'
       />
-      <MenuItem icon={LuMessageSquareDot} label='Messages' address='messages' />
+      {/* <MenuItem icon={LuMessageSquareDot} label='Messages' address='messages' /> */}
     
     </>
   )

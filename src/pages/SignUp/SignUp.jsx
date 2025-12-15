@@ -1,16 +1,19 @@
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
-import { ImSpinner } from "react-icons/im";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import useAxios from "../../hooks/useAxios";
 
 const SignUp = () => {
-  const { registerUser, updateUserProfile, loading } = useAuth();
+  const { signInGoogle, registerUser, updateUserProfile, setLoading } =
+    useAuth();
   const axiosSecure = useAxiosSecure();
+  const axiosInstance = useAxios();
+  const from = location?.state || "/dashboard";
 
   const {
     register,
@@ -48,26 +51,47 @@ const SignUp = () => {
             photoURL,
           };
 
-          axiosSecure.post("/users", userData).then((res) => {
-            if (res.data.insertedId) {
+          axiosSecure
+            .post("/users", userData)
+            .then((res) => {
+              if (res.data.insertedId) {
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: `Registration Successful!`,
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+              } else {
+                Swal.fire({
+                  position: "top-end",
+                  icon: "error",
+                  title: `You Are Already Registered, Please Login`,
+                  showConfirmButton: false,
+                  timer: 2000,
+                });
+              }
+              return;
+            })
+            .catch((err) => {
               Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: `Registration Successful!`,
+                title: `Failed Registration. ${err.message}`,
                 showConfirmButton: false,
                 timer: 2000,
               });
-            }
-          });
+              return setLoading(false);
+            });
 
           //3. update profile with photo
           const updateProfile = {
             displayName: data.name,
             photoURL,
           };
+
           updateUserProfile(updateProfile)
             .then(() => {
-             
               navigate(location.state || "/");
             })
             .catch((error) => console.log(error));
@@ -76,6 +100,84 @@ const SignUp = () => {
       .catch((error) => {
         toast.error(error.message);
       });
+  };
+
+  // Handle Google Signin
+  // const handleGoogleSignIn = async () => {
+  //   //User Registration using google
+  //   signInGoogle()
+  //     .then((res) => {
+  //       console.log(res.user);
+  //       const userData = {
+  //         name: res.user.displayName,
+  //         email: res.user.email,
+  //         role: "student",
+  //         photoURL: res.user.photoURL,
+  //       };
+  //       axiosInstance
+  //         .post("/users", userData)
+  //         .then((res) => {
+  //           console.log("user data has been stored", res.data);
+  //           Swal.fire({
+  //             position: "top-end",
+  //             icon: "success",
+  //             title: `Registration Successful!`,
+  //             showConfirmButton: false,
+  //             timer: 2000,
+  //           });
+
+  //           navigate(from);
+  //         })
+  //         .catch((err) => {
+  //           Swal.fire({
+  //             position: "top-end",
+  //             icon: "success",
+  //             title: `Failed Registration. ${err.message}`,
+  //             showConfirmButton: false,
+  //             timer: 2000,
+  //           });
+  //           setLoading(false);
+  //           navigate(from);
+  //         });
+  //     })
+  //     .catch((err) => {
+  //       toast.error(err?.message);
+  //       // console.log(err.message)
+  //       navigate(from);
+  //     });
+  // };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const res = await signInGoogle();
+
+      const userData = {
+        name: res.user.displayName,
+        email: res.user.email,
+        role: "student",
+        photoURL: res.user.photoURL,
+      };
+      setLoading(true)
+      const dbRes = await axiosInstance.post("/users", userData);
+      setLoading(false)
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Registration Successful!",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+
+      navigate(from);
+    } catch (err) {
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: err.message || "Registration Failed",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }
   };
 
   return (
@@ -214,11 +316,7 @@ const SignUp = () => {
               type="submit"
               className="bg-secondary w-full rounded-md py-3 text-white"
             >
-              {loading ? (
-                <ImSpinner className="animate-spin m-auto" />
-              ) : (
-                "Create Account"
-              )}
+              Create Account
             </button>
           </div>
         </form>
@@ -229,7 +327,10 @@ const SignUp = () => {
           </p>
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
-        <div className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer">
+        <div
+          onClick={handleGoogleSignIn}
+          className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
+        >
           <FcGoogle size={32} />
 
           <p>Continue with Google</p>

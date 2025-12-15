@@ -5,6 +5,7 @@ import useAxios from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
 import Container from "../Shared/Container";
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 const Tuitions = () => {
   const { user } = useAuth();
   const axiosInstance = useAxios();
@@ -35,6 +36,9 @@ const Tuitions = () => {
           {tuitions.map((tuition, index) => (
             <Card key={index} tuition={tuition} />
           ))}
+        </div>
+        <div className="flex justify-center my-10">
+          <Link to={'/tuitions'} className="btn btn-primary btn-lg">See All Tuitions</Link>
         </div>
       </motion.div>
     </Container>

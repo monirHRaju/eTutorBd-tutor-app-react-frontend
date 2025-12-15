@@ -11,7 +11,7 @@ const Navbar = () => {
       {/* <li><NavLink to={"/"}>Home</NavLink></li> */}
 
       <li><MyNavLink to={"/"} className={''}>Home</MyNavLink></li>
-      <li><MyNavLink to={"/add-tuition"}>Add Tuition</MyNavLink></li>
+      <li><MyNavLink to={"/dashboard/post-tuition"}>Add Tuition</MyNavLink></li>
       <li><MyNavLink to={"/tuitions"}>All Tuitions</MyNavLink></li>
       <li><MyNavLink to={"/tutors"}>Tutors</MyNavLink></li>
       <li><MyNavLink to={"/contact"}>Contact</MyNavLink></li>

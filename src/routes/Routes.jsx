@@ -25,6 +25,7 @@ import TutorProfile from '../pages/TutorProfile/TutorProfile'
 import Payments from '../pages/Dashboard/Common/Payments'
 import TutorPayments from '../pages/Dashboard/Common/TutorPayments'
 import AllPayments from '../pages/Dashboard/Common/AllPayments'
+import StudentRoute from './StudentRoute'
 
 export const router = createBrowserRouter([
   {
@@ -40,10 +41,7 @@ export const router = createBrowserRouter([
         path: 'tutors/tutor-profile',
         element: <TutorProfile></TutorProfile>
       },
-      {
-        path: 'add-tuition',
-        element: <PrivateRoute><AddTution></AddTution></PrivateRoute>
-      },
+      
       {
         path: 'tuition-details/:id',
         element: <TuitionDetails></TuitionDetails>
@@ -85,7 +83,10 @@ export const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
-      
+      {
+        path: 'post-tuition',
+        element: <PrivateRoute><StudentRoute><PostTuition></PostTuition></StudentRoute></PrivateRoute>
+      },
       {
         path: 'manage-tuitions',
         element: (
@@ -98,21 +99,12 @@ export const router = createBrowserRouter([
       {
         path: 'my-tuitions',
         element: (
-          <PrivateRoute>
+          <StudentRoute>
             <ManageMyTuitions />
-          </PrivateRoute>
+          </StudentRoute>
         ),
       },
       
-      {
-        path: 'post-tuition',
-        element: (
-          <PrivateRoute>
-            <PostTuition />
-          </PrivateRoute>
-        ),
-      },
-
       {
         path: 'profile',
         element: (

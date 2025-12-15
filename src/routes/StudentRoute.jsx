@@ -6,19 +6,19 @@ import Forbidden from '../components/Shared/Forbidden';
 import { Navigate } from 'react-router';
 
 
-const AdminRoute = ({children}) => {
+const StudentRoute = ({children}) => {
     const {loading} = useAuth()
     const {isLoading, role} = useRole()
 
 
     if(loading || isLoading) return <LoadingSpinner />
 
-    if (role !== 'admin') {
-            return <Forbidden role={role}></Forbidden>
+    if (role !== 'student') {
+            return <Forbidden></Forbidden>
             // return <Navigate to="/login"></Navigate>
         }
 
     return children
 };
 
-export default AdminRoute
+export default StudentRoute
