@@ -30,7 +30,7 @@ const Card = ({ tuition }) => {
 
         <div className="font-semibold flex flex-row gap-4 items-center">
           <FaRegMoneyBill1 size={20} />
-          <p>Budget : ${tuition.budget}/month</p>
+          <p>Budget : ৳ {tuition.budget}/month</p>
         </div>
 
       </div>

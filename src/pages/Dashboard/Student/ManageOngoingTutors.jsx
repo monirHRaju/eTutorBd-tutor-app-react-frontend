@@ -2,16 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import useAxios from "../../../hooks/useAxios";
 import useAuth from "../../../hooks/useAuth";
-import MyTuitionDataRow from "../../../components/Dashboard/TableRows/MyTuitionDataRow";
+import OngoingTuitionsDataRow from "../../../components/Dashboard/TableRows/OngoingTuitionsDataRow";
 
-const ManageTutorApplications = () => {
+const ManageOngoingTutors = () => {
     const axiosInstance = useAxios()
     const {user} = useAuth()
 
   const { data: applications = [], refetch } = useQuery({
-    queryKey: ["tutor-applications", user?.email],
+    queryKey: ["enrolled-tuitions", user?.email],
     queryFn: async () => {
-      const { data } = await axiosInstance.get(`/applications/${user?.email}/tutor`);
+      const { data } = await axiosInstance.get(`/applications/${user?.email}/student`);
       return data;
     },
   });
@@ -37,20 +37,27 @@ const ManageTutorApplications = () => {
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
-                      Location
+                      Tutor Name
                     </th>
                     
                     <th
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
-                      Student Budget
+                      Tutor Email
+                    </th>
+                    
+                    <th
+                      scope='col'
+                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                    >
+                      Tuition Location
                     </th>
                     <th
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
-                      My Offer
+                      Salary
                     </th>
                         
                     <th
@@ -59,27 +66,27 @@ const ManageTutorApplications = () => {
                     >
                       Status
                     </th>
-                        
+                   
                     <th
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
-                      Offer Send At
+                      Enroll Date
                     </th>
-                        
-                    <th
+                   
+                    {/* <th
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
                       Action
-                    </th>
+                    </th> */}
                   </tr>
                 </thead>
                 <tbody>
                   {
                     applications.length === 0 
                     ? <tr className='flex justify-center p-6'><td className='text-center'>No data found</td></tr>
-                    : applications.map((application) => <MyTuitionDataRow key={application._id} refetch={refetch} application={application}/>)
+                    : applications.map((application) => <OngoingTuitionsDataRow key={application._id} refetch={refetch} application={application}/>)
                   }
                   
                 </tbody>
@@ -92,4 +99,4 @@ const ManageTutorApplications = () => {
   )
 };
 
-export default ManageTutorApplications;
+export default ManageOngoingTutors;

@@ -1,6 +1,6 @@
 import MenuItem from "./MenuItem";
 import { MdPostAdd  } from "react-icons/md";
-import { FaBookOpen } from "react-icons/fa";
+import { FaBookOpen, FaChalkboardTeacher  } from "react-icons/fa";
 import { FaMoneyBill1 } from "react-icons/fa6";
 import { ImProfile  } from "react-icons/im";
 import { IoMdSettings } from "react-icons/io";
@@ -12,6 +12,12 @@ const StudentMenu = () => {
         label="My Tuitions"
         address="my-tuitions"
       />
+      <MenuItem
+        icon={FaChalkboardTeacher }
+        label="Ongoing Tutors"
+        address="ongoing-tutors"
+      />
+      
       <MenuItem
         icon={MdPostAdd }
         label="Post New Tuition"

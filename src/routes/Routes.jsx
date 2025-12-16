@@ -30,6 +30,8 @@ import UpdateProfile from '../pages/Dashboard/Common/UpdateProfile'
 import TutorDetails from '../pages/Tutors/TutorDetails'
 import TutorUpdateProfile from '../pages/Dashboard/Common/TutorProfileUpdate'
 import TutorRoute from './TutorRoute'
+import ManageOngoingTuitions from '../pages/Dashboard/Tutor/ManageOngoingTuitions'
+import ManageOngoingTutors from '../pages/Dashboard/Student/ManageOngoingTutors'
 
 export const router = createBrowserRouter([
   {
@@ -76,9 +78,20 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'my-applications',
-        element: <PrivateRoute><TutorApplications></TutorApplications></PrivateRoute>
+        path: 'ongoing-tuitions',
+        element: <TutorRoute><ManageOngoingTuitions></ManageOngoingTuitions></TutorRoute>
       },
+      
+      {
+        path: 'ongoing-tutors',
+        element: <StudentRoute><ManageOngoingTutors></ManageOngoingTutors></StudentRoute>
+      },
+      
+      {
+        path: 'my-applications',
+        element: <TutorRoute><TutorApplications></TutorApplications></TutorRoute>
+      },
+
       {
         path: 'manage-users',
         element: (
