@@ -22,7 +22,7 @@ const Tutors = () => {
     <div>
       <Container>
         <h1 className="text-4xl font-bold mt-10 mb-6 text-center text-primary">
-        All Tuitions
+        All Tutors
       </h1>
         <div className="pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {tutors.map((tutor, index) => (

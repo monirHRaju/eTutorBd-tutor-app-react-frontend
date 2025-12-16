@@ -87,7 +87,7 @@ export default function TutorInfoCard({tutor}) {
             <div className="flex items-center gap-2">
               <MdAttachMoney className="text-primary" />
               <span>
-                <strong>Salary:</strong> ৳{expectedSalary}
+                <strong>Expected Salary:</strong> ৳{expectedSalary}
               </span>
             </div>
           </div>
