@@ -81,17 +81,13 @@ const Sidebar = () => {
                   alt="logo"
                   width="60"
                   height="60"
+                  className="rounded-full border-2"
                 />
                 <div>
                   <Link to={"/"}>
                     <h3 className="text-2xl">eTutor BD</h3>
                     <p>{user?.displayName}</p>
-                    <p>{user?.email}</p>
                   </Link>
-
-                  <span onClick={() => userLogout()} className="link">
-                    Logout
-                  </span>
                 </div>
               </span>
             </div>
@@ -116,12 +112,8 @@ const Sidebar = () => {
                 <StudentMenu />
               )}
 
-              <MenuItem
-                icon={IoMdSettings}
-                label="Profile"
-                address="/dashboard/profile"
-              />
-
+              
+              <hr className="border border-white"/>
               <button
                 onClick={()=> userLogout()}
                 className="flex cursor-pointer w-full items-center px-4 py-2 mt-5 text-primary bg-white rounded-full transition-colors duration-300 transform"

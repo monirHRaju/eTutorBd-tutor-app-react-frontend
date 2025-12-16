@@ -26,6 +26,10 @@ import Payments from '../pages/Dashboard/Common/Payments'
 import TutorPayments from '../pages/Dashboard/Common/TutorPayments'
 import AllPayments from '../pages/Dashboard/Common/AllPayments'
 import StudentRoute from './StudentRoute'
+import UpdateProfile from '../pages/Dashboard/Common/UpdateProfile'
+import TutorDetails from '../pages/Tutors/TutorDetails'
+import TutorUpdateProfile from '../pages/Dashboard/Common/TutorProfileUpdate'
+import TutorRoute from './TutorRoute'
 
 export const router = createBrowserRouter([
   {
@@ -38,8 +42,8 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: 'tutors/tutor-profile',
-        element: <TutorProfile></TutorProfile>
+        path: 'tutor-profile/:id',
+        element: <TutorDetails></TutorDetails>
       },
       
       {
@@ -113,6 +117,34 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      
+      {
+        path: 'tutor-profile/:id',
+        element: (
+          <TutorRoute>
+            <TutorDetails />
+          </TutorRoute>
+        ),
+      },
+      
+      {
+        path: 'profile/update-profile',
+        element: (
+          <PrivateRoute>
+            <UpdateProfile />
+          </PrivateRoute>
+        ),
+      },
+      
+      {
+        path: 'tutor-update-profile',
+        element: (
+          <TutorRoute>
+            <TutorUpdateProfile />
+          </TutorRoute>
+        ),
+      },
+
       {
         path: 'payment-success',
         Component: PaymentSuccess

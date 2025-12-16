@@ -1,30 +1,41 @@
-import { BsFillHouseAddFill } from 'react-icons/bs'
-import { MdOutlineManageHistory } from 'react-icons/md'
-import MenuItem from './MenuItem'
-import { LuMessageSquareDot } from 'react-icons/lu'
+import MenuItem from "./MenuItem";
+import { MdPostAdd  } from "react-icons/md";
+import { FaBookOpen } from "react-icons/fa";
+import { FaMoneyBill1 } from "react-icons/fa6";
+import { ImProfile  } from "react-icons/im";
+import { IoMdSettings } from "react-icons/io";
 const StudentMenu = () => {
   return (
     <>
       <MenuItem
-        icon={BsFillHouseAddFill}
-        label='My Tuitions'
-        address='my-tuitions'
+        icon={FaBookOpen}
+        label="My Tuitions"
+        address="my-tuitions"
       />
       <MenuItem
-        icon={MdOutlineManageHistory}
-        label='Post New Tuition'
-        address='post-tuition'
+        icon={MdPostAdd }
+        label="Post New Tuition"
+        address="post-tuition"
       />
-      
-      
+
       <MenuItem
-        icon={MdOutlineManageHistory}
-        label='Payments'
-        address='payments'
+        icon={FaMoneyBill1}
+        label="Payments"
+        address="payments"
+      />
+      <MenuItem
+        icon={ImProfile }
+        label="Profile"
+        address="/dashboard/profile"
+      />
+      <MenuItem
+        icon={IoMdSettings}
+        label="Profile Settings"
+        address="update-profile"
       />
       {/* <MenuItem icon={LuMessageSquareDot} label='Messages' address='messages' /> */}
     </>
-  )
-}
+  );
+};
 
-export default StudentMenu
+export default StudentMenu;

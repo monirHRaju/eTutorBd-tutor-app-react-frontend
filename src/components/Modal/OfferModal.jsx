@@ -103,7 +103,7 @@ const OfferModal = ({ tuition, closeModal, isOpen, refetch }) => {
 
               <div className="mt-2">
                 <p className="text-sm text-gray-500">
-                  Budget: $ {tuition.budget}
+                  Budget: ৳ {tuition.budget}
                 </p>
               </div>
 
