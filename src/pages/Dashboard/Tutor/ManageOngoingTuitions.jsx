@@ -1,17 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import useAxios from "../../../hooks/useAxios";
 import useAuth from "../../../hooks/useAuth";
 import OngoingTuitionsDataRow from "../../../components/Dashboard/TableRows/OngoingTuitionsDataRow";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageOngoingTuitions = () => {
-    const axiosInstance = useAxios()
+    const axiosSecure = useAxiosSecure()
     const {user} = useAuth()
 
   const { data: applications = [], refetch } = useQuery({
     queryKey: ["enrolled-applications", user?.email],
     queryFn: async () => {
-      const { data } = await axiosInstance.get(`/enrolled-applications/${user?.email}`);
+      const { data } = await axiosSecure.get(`/enrolled-applications/${user?.email}`);
       return data;
     },
   });

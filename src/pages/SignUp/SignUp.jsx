@@ -6,13 +6,11 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
-import useAxios from "../../hooks/useAxios";
 
 const SignUp = () => {
   const { signInGoogle, registerUser, updateUserProfile, setLoading } =
     useAuth();
   const axiosSecure = useAxiosSecure();
-  const axiosInstance = useAxios();
   const from = location?.state || "/dashboard";
 
   const {
@@ -111,7 +109,7 @@ const SignUp = () => {
         photoURL: res.user.photoURL,
       };
       setLoading(true)
-      const dbRes = await axiosInstance.post("/users", userData);
+      await axiosSecure.post("/users", userData);
       setLoading(false)
       Swal.fire({
         position: "top-end",

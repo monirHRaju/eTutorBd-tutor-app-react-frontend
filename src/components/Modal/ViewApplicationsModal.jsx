@@ -3,9 +3,11 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useRole from "../../hooks/useRole";
 
 const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
   const axiosSecure = useAxiosSecure();
+  const {role} = useRole()
 
   const { data: applications = [], refetch: appsRefetch } = useQuery({
     queryKey: ["applications", tuition._id],
@@ -148,12 +150,15 @@ const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
                         </td>
 
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <button
+                          {
+                            role === "student" && <button
                             onClick={() => handlePayment(application)}
                             className="cursor-pointer btn btn-secondary btn-sm"
                           >
                             Accept & Pay
                           </button>
+                          }
+                          
 
                           <button
                             onClick={() =>

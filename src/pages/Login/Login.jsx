@@ -6,14 +6,14 @@ import { FcGoogle } from 'react-icons/fc'
 import { TbFidgetSpinner } from 'react-icons/tb'
 import { useForm } from 'react-hook-form'
 import { FaHome } from 'react-icons/fa'
-import useAxios from '../../hooks/useAxios'
 import Swal from 'sweetalert2'
+import useAxiosSecure from '../../hooks/useAxiosSecure'
 
 const Login = () => {
   const { signInUser, signInGoogle, loading, user, setLoading } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
-  const axiosInstance = useAxios()
+  const axiosSecure = useAxiosSecure()
   const {
       register,
       handleSubmit,
@@ -52,7 +52,7 @@ const Login = () => {
           photoURL: res.user.photoURL,
         };
         setLoading(true)
-        const dbRes = await axiosInstance.post("/users", userData);
+        await axiosSecure.post("/users", userData);
         setLoading(false)
         Swal.fire({
           position: "top-end",

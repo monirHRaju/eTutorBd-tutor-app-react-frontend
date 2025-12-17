@@ -9,37 +9,43 @@ const AllTuitions = () => {
   const [totalTuitions, setTotalTuitions] = useState(0)
   const [totalPage, setTotalPage] = useState(0)
   const [currentPage, setCurrentPage] = useState(0)
-  const limit = 5;
+  const [sort, setSort] = useState("createdAt")
+  const [order, setOrder] = useState("desc")
+  const [searchText, setSearchText] = useState("")
+  const limit = 8;
 
 
   useEffect(() => {
-    axiosInstance.get(`all-accepted-tuitions-client?limit=${limit}&skip=${currentPage * limit}`)
+    axiosInstance.get(`all-accepted-tuitions-for-client?limit=${limit}&skip=${currentPage * limit}&sort=${sort}&order=${order}&search=${searchText}`)
     .then((res) => {
       setTuitions(res.data.tuitions)
       setTotalTuitions(res.data.total)
       const page = Math.ceil(res.data.total / limit)
       setTotalPage(page)
     })
-  }, [currentPage])
+  }, [currentPage, sort, order, searchText])
 
 
   const handleSelect = (e) => {
-    // console.log(e.target.value);
-    // const sortText = e.target.value;
-    // setsort(sortText.split("-")[0]);
-    // setOrder(sortText.split("-")[1]);
+    const sortText = e.target.value;
+    
+
+    setSort(sortText.split("-")[0]);
+    setOrder(sortText.split("-")[1]);
+
   };
 
   const handleSearch = (e) => {
-    // setSearchText(e.target.value);
-    // setCurrentPage(0);
+    // console.log(searchText)
+    setSearchText(e.target.value);
+    setCurrentPage(0);
   };
 
 
   return (
     <div className="my-10">
       <Container>
-        <h1 className="text-4xl font-bold mt-10 mb-6 text-center">
+        <h1 className="text-4xl font-bold mt-10 mb-6 text-center text-primary">
         All Tuitions
       </h1>
 
@@ -73,7 +79,7 @@ const AllTuitions = () => {
               onChange={handleSearch}
               type="search"
               className=""
-              placeholder="Search Apps"
+              placeholder="Search Tuitions"
             />
           </label>
         </form>
@@ -85,8 +91,8 @@ const AllTuitions = () => {
             </option>
             <option value={"budget-desc"}>Budget : High - Low</option>
             <option value={"budget-asc"}>Budget : Low - High</option>
-            <option value={"size-desc"}>Date : Descending</option>
-            <option value={"size-asc"}>Date : Ascending</option>
+            <option value={"createdAt-desc"}>Date : Descending</option>
+            <option value={"createdAt-asc"}>Date : Ascending</option>
          </select>
         </div>
       </div>
@@ -100,12 +106,12 @@ const AllTuitions = () => {
         <div className="flex justify-center flex-wrap gap-3 my-10">
           
           {
-            currentPage > 1 && <button onClick={() => setCurrentPage(currentPage - 1 )} className="btn">Prev</button>
+            currentPage > 0 && <button onClick={() => setCurrentPage(currentPage - 1 )} className="btn">Prev</button>
           }
           
           
           {
-            [...Array(totalPage).keys()].map(i => <button onClick={()=> setCurrentPage(i)} className={`btn ${currentPage === i && "btn-primary"}`} >{i+1}</button>)
+            [...Array(totalPage).keys()].map(i => <button onClick={()=> setCurrentPage(i)} key={i} className={`btn ${currentPage === i && "btn-primary"}`} >{i+1}</button>)
           }
 
          {

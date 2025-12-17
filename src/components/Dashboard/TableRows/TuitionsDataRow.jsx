@@ -115,11 +115,12 @@ const TuitionsDataRow = ({ tuition, refetch }) => {
 
         {/* view tuition*/}
         {
-          role === 'student' && <button
+          role !== 'tutor' && <button
          onClick={() => setIsOpen(true)}
           className="btn btn-info btn-sm ml-3"
         >
-          <IoInformationCircleOutline size={20} />
+          Applications
+          {/* <IoInformationCircleOutline size={20} /> */}
         </button>
         }
         

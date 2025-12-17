@@ -16,11 +16,6 @@ const AdminMenu = () => {
         address="manage-tuitions"
       />
       <MenuItem
-        icon={FaWpforms}
-        label="Tuition Applications"
-        address="manage-applications"
-      />
-      <MenuItem
         icon={FaMoneyBill1}
         label="Payments"
         address="all-payments"

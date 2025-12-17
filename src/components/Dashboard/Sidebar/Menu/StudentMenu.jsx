@@ -37,7 +37,7 @@ const StudentMenu = () => {
       <MenuItem
         icon={IoMdSettings}
         label="Profile Settings"
-        address="update-profile"
+        address="profile/update-profile"
       />
       {/* <MenuItem icon={LuMessageSquareDot} label='Messages' address='messages' /> */}
     </>

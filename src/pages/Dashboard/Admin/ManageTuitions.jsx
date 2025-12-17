@@ -1,15 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
-import useAxios from '../../../hooks/useAxios'
 import TuitionsDataRow from '../../../components/Dashboard/TableRows/TuitionsDataRow'
+import useAxiosSecure from '../../../hooks/useAxiosSecure'
 
 const ManageTuitions = () => {
-  const axiosInstance = useAxios()
+  const axiosSecure = useAxiosSecure()
 
   
   const {data:tuitions=[], refetch} = useQuery({
     queryKey: ['tuitions', 'pending'],
     queryFn: async()  => {
-      const {data} = await axiosInstance.get('/all-tuitions')
+      const {data} = await axiosSecure.get('/all-tuitions')
       return data
     }
   })

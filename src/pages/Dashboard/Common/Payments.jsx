@@ -1,17 +1,17 @@
 import { useQuery } from '@tanstack/react-query'
-import useAxios from '../../../hooks/useAxios'
 import useAuth from '../../../hooks/useAuth'
 import PaymentsDataRow from '../../../components/Dashboard/TableRows/PaymentsDataRow'
+import useAxiosSecure from '../../../hooks/useAxiosSecure'
 
 const Payments = () => {
-  const axiosInstance = useAxios()
+  const axiosSecure = useAxiosSecure()
   const {user} = useAuth()
 
   
   const {data:payments=[], refetch} = useQuery({
     queryKey: ['student-payments', user?.email],
     queryFn: async()  => {
-      const {data} = await axiosInstance.get(`/student-payments?email=${user?.email}`)
+      const {data} = await axiosSecure.get(`/student-payments?email=${user?.email}`)
       return data
     }
   })

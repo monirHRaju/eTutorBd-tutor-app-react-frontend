@@ -1,16 +1,16 @@
 import { useQuery } from '@tanstack/react-query'
 import UserDataRow from '../../../components/Dashboard/TableRows/UserDataRow'
 import useAuth from '../../../hooks/useAuth'
-import useAxios from '../../../hooks/useAxios'
+import useAxiosSecure from '../../../hooks/useAxiosSecure'
 
 const ManageUsers = () => {
-  const axiosInstance = useAxios()
+  const axiosSecure = useAxiosSecure()
   const {user} = useAuth()
   
   const {data:users=[], refetch} = useQuery({
     queryKey: ['users', user?.email],
     queryFn: async()  => {
-      const {data} = await axiosInstance.get(`/users?email=${user.email}`)
+      const {data} = await axiosSecure.get(`/users?email=${user.email}`)
       return data
     }
   })

@@ -1,11 +1,11 @@
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
-import useAxios from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useRole from "../../hooks/useRole";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const OfferModal = ({ tuition, closeModal, isOpen, refetch }) => {
-  const axiosInstance = useAxios();
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const {role} = useRole()
 
@@ -52,7 +52,7 @@ const OfferModal = ({ tuition, closeModal, isOpen, refetch }) => {
       tutorEmail: user?.email,
       status: 'pending'
     };
-    axiosInstance.post("/applications", applicationInfo)
+    axiosSecure.post("/applications", applicationInfo)
       .then((res) => {
         if (res.data.insertedId) {
           closeModal()
@@ -119,7 +119,7 @@ const OfferModal = ({ tuition, closeModal, isOpen, refetch }) => {
                   type="submit"
                   className="cursor-pointer inline-flex justify-center text-white btn btn-secondary px-4 py-2 text-sm font-medium"
                 >
-                  Send Offer
+                  Apply
                 </button>
                 <button
                   type="button"

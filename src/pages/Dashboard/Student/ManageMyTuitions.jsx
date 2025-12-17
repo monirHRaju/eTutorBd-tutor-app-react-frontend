@@ -1,17 +1,17 @@
 import { useQuery } from '@tanstack/react-query'
-import useAxios from '../../../hooks/useAxios'
 import TuitionsDataRow from '../../../components/Dashboard/TableRows/TuitionsDataRow'
 import useAuth from '../../../hooks/useAuth'
+import useAxiosSecure from '../../../hooks/useAxiosSecure'
 
 const ManageMyTuitions = () => {
-  const axiosInstance = useAxios()
+  const axiosSecure = useAxiosSecure()
   const {user} = useAuth()
 
   
   const {data:tuitions=[], refetch} = useQuery({
     queryKey: ['my-tuitions', user?.email],
     queryFn: async()  => {
-      const {data} = await axiosInstance.get(`/tuitions/${user?.email}/student`)
+      const {data} = await axiosSecure.get(`/tuitions/${user?.email}/student`)
       return data
     }
   })
