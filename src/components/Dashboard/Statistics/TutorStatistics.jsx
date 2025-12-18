@@ -42,11 +42,11 @@ const TutorStatistics = () => {
   
   // console.log(tutorEnrolledStat)
   return (
-    <div className="w-10/12 grid grid-cols-2 md:grid-cols-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
 
       {
         tutorPaymentStat.map((stat, index) => { 
-        return <div className="stat" key={index}>
+        return <div className="stat shadow" key={index}>
         <div className="stat-figure text-primary">
           <FaMoneyBillWave size={30}></FaMoneyBillWave>
         </div>
@@ -60,7 +60,7 @@ const TutorStatistics = () => {
       
       {
         tutorEnrolledStat.map((stat, index) => { 
-        return <div className="stat" key={index}>
+        return <div className="stat shadow" key={index}>
         <div className="stat-figure text-success">
           <FaUser size={30}></FaUser>
         </div>
@@ -74,7 +74,7 @@ const TutorStatistics = () => {
       
       {
         tutorPendingStat.map((stat, index) => { 
-        return <div className="stat" key={index}>
+        return <div className="stat shadow" key={index}>
         <div className="stat-figure text-warning">
           <FaUser size={30}></FaUser>
         </div>
@@ -88,7 +88,7 @@ const TutorStatistics = () => {
       
       {
         tutorRejectedStat.map((stat, index) => { 
-        return <div className="stat" key={index}>
+        return <div className="stat shadow" key={index}>
         <div className="stat-figure text-error">
           <FaUser size={30}></FaUser>
         </div>

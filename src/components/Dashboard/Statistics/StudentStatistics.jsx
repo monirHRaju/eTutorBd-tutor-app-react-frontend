@@ -37,10 +37,10 @@ const StudentStatistics = () => {
   });
   // console.log(postedTuitionsStat);
   return (
-    <div className="w-10/12 grid grid-cols-2 md:grid-cols-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       {studentPaymentStat.map((stat, index) => {
         return (
-          <div className="stat" key={index}>
+          <div className="stat shadow" key={index}>
             <div className="stat-figure text-primary">
               <FaMoneyBillWave size={30}></FaMoneyBillWave>
             </div>
@@ -53,7 +53,7 @@ const StudentStatistics = () => {
 
       {studentEnrolledStat.map((stat, index) => {
         return (
-          <div className="stat" key={index}>
+          <div className="stat shadow" key={index}>
             <div className="stat-figure text-success">
               <FaUser size={30}></FaUser>
             </div>
@@ -66,7 +66,7 @@ const StudentStatistics = () => {
       
       {postedTuitionsStat.map((stat, index) => {
         return (
-          <div className="stat" key={index}>
+          <div className="stat shadow" key={index}>
             <div className="stat-figure text-info">
               <FaBook size={30}></FaBook>
             </div>

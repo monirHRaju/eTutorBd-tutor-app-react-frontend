@@ -94,7 +94,7 @@ const AdminStatistics = () => {
         </div>
       </div>
       
-      <h1 className="text-3xl font-bold">Tuition Stat</h1>
+      <h1 className="text-3xl font-bold">Tuition Application Stat</h1>
       <div className="mt-12">
         {/* small cards */}
         <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grow">
