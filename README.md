@@ -4,7 +4,17 @@
 This project is built with **React 19, TailwindCSS, Firebase authentication, Axios, and React Query** for real-time data fetching.
 
 [Live Link] 
-[Github Repo]
+[Vercel Server Link] https://etutorbd-app-server.vercel.app/
+
+[Github Repo Client] https://github.com/monirHRaju/eTutorBd-tutor-app-react-frontend.git
+[Github Repo Client] https://github.com/monirHRaju/eTutorBd-tutor-app-react-backend.git
+
+Test Accounts (Role Based):
+admin: admin@email.com
+tutor: tutor2@email.com
+student: student@email.com
+
+Password for all account: 123456
 ---
 
 ## 🚀 Features

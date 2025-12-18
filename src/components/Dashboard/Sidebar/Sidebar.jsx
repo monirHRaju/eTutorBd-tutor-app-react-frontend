@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import useAuth from "../../../hooks/useAuth";
-import logo from "../../../../public/elogo.png";
+import logo from "/elogo.png";
 // Icons
 import { GrLogout } from "react-icons/gr";
 import { IoMdSettings } from "react-icons/io";

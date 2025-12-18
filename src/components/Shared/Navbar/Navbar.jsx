@@ -1,6 +1,6 @@
 import Container from "../Container";
 import { Link, NavLink } from "react-router";
-import logo from "../../../../public/eLogo.png";
+import logo from "/elogo.png";
 import useAuth from "../../../hooks/useAuth";
 import MyNavLink from "../../Home/MyNavLink";
 const Navbar = () => {
