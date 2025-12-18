@@ -202,11 +202,15 @@ const SignUp = () => {
               <input
                 type="password"
                 {...register("password", {
-                  required: "Password is required",
+                  required: "password is required.",
                   minLength: {
                     value: 6,
-                    message: "Password must be equal or more than 6.",
+                    message: "password minimum 6 digits.",
                   },
+                  pattern: {
+                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{4,}$/,
+                    message: "please enter a strong password",
+                  }
                 })}
                 autoComplete="new-password"
                 id="password"

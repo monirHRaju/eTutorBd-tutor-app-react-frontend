@@ -3,18 +3,18 @@
 **eTutor BD** is a modern tuition marketplace where **students can post tuition opportunities** and **tutors can apply**.  
 This project is built with **React 19, TailwindCSS, Firebase authentication, Axios, and React Query** for real-time data fetching.
 
-[Live Link] https://etutorbd-tutor-app.web.app/
-[Vercel Server Link] https://etutorbd-app-server.vercel.app/
+**[Live Link]** https://etutorbd-tutor-app.web.app/
+**[Vercel Server Link]** https://etutorbd-app-server.vercel.app/
 
-[Github Repo Client] https://github.com/monirHRaju/eTutorBd-tutor-app-react-frontend.git
-[Github Repo Client] https://github.com/monirHRaju/eTutorBd-tutor-app-react-backend.git
+- [Github Repo Client] https://github.com/monirHRaju/eTutorBd-tutor-app-react-frontend.git
+- [Github Repo Client] https://github.com/monirHRaju/eTutorBd-tutor-app-react-backend.git
 
-Test Accounts (Role Based):
-admin: admin@email.com
-tutor: tutor2@email.com
-student: student@email.com
+## Test Accounts (Role Based):
+- admin: admin@email.com
+- tutor: tutor2@email.com
+- student: student@email.com
 
-Password for all account: 123456
+- Password for all account: 123456
 ---
 
 ## 🚀 Features

@@ -4,7 +4,6 @@ import useAuth from "../../../hooks/useAuth";
 import logo from "/elogo.png";
 // Icons
 import { GrLogout } from "react-icons/gr";
-import { IoMdSettings } from "react-icons/io";
 import { AiOutlineBars } from "react-icons/ai";
 import { BsGraphUp } from "react-icons/bs";
 
@@ -87,6 +86,8 @@ const Sidebar = () => {
                   <Link to={"/"}>
                     <h3 className="text-2xl">eTutor BD</h3>
                     <p>{user?.displayName}</p>
+                    <p className="text-sm">{role}</p>
+                    {console.log(role)}
                   </Link>
                 </div>
               </span>
