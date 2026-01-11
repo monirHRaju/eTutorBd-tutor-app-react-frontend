@@ -21,7 +21,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="fixed w-full z-10 bg-primary text-white shadow-md">
+    <div className="fixed w-full z-10 bg-secondary text-white text-4xl shadow-md">
       <div className="">
         <Container>
           <div className="navbar">

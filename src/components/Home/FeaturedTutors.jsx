@@ -6,6 +6,7 @@ import Container from "../Shared/Container";
 import { motion } from "framer-motion";
 import TutorInfoCard from "./TutorInfoCard";
 import { Link } from "react-router";
+import SectionHeader from "../Shared/SectionHeader";
 
 const FeaturedTutors = () => {
   const { user } = useAuth();
@@ -32,14 +33,14 @@ const FeaturedTutors = () => {
         viewport={{ once: false }}
         className="my-20"
       >
-        <h1 className='text-primary text-6xl font-bold my-20 text-center'>Featured Tutors</h1>
+        <SectionHeader label="Featured Tutors" title="Meet Our Expert Tutors" subtitle="Discover highly qualified and experienced tutors ready to guide your learning journey." />
         <div className="pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {tutors.map((tutor, index) => (
             <TutorInfoCard key={index} tutor={tutor} />
           ))}
         </div>
         <div className="flex justify-center my-10">
-          <Link to={'/tutors'} className="btn btn-primary btn-lg">See All Tutors</Link>
+          <Link to={'/tutors'} className="btn btn-secondary btn-lg">See All Tutors</Link>
         </div>
       </motion.div>
     </Container>

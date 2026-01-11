@@ -25,10 +25,10 @@ export default function TutorInfoCard({tutor}) {
     <div className="mx-auto">
       <div className="card bg-base-100 shadow-xl rounded-2xl overflow-hidden hover:shadow-2xl transition">
         {/* Header */}
-        <div className="h-24 bg-gradient-to-r from-sky-100 to-indigo-100 relative">
+        <div className="h-24 bg-gradient-to-r from-secondary to-secondary relative">
           <div className="absolute -bottom-10 left-1/2 -translate-x-1/2">
             <div className="avatar">
-              <div className="w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 bg-white">
+              <div className="w-20 rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2 bg-white">
                 {photoURL ? (
                   <img src={photoURL} alt={name} />
                 ) : (

@@ -4,13 +4,13 @@ import logo from "/elogo.png";
 import Container from "../Container";
 const Footer = () => {
   return (
-    <div className="bg-base-200">
+    <div className="bg-secondary text-white mt-20">
       <Container>
       <footer className="px-4 divide-y  text-gray-800 relative bottom-0 left-0">
       <footer className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-4 text-base-content p-16">
         <aside>
           <img src={logo} alt="eTutor BD logo" className="w-[100px]" />
-          <h2 className="text-primary font-bold text-2xl">eTutor BD</h2>
+          <h2 className="font-bold text-2xl">eTutor BD</h2>
           <p>
             eTutorBD is a platform where parents, students and tutors can easily
             connect with each other. We provide qualified Home/Online tutors to

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Satisfy = () => {
   return (
-    <div className="bg-primary h-35">
+    <div className="bg-secondary h-35">
       <Container>
         <motion.div
           initial={{ opacity: 0, x: 60 }}

@@ -6,6 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import Container from "../Shared/Container";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
+import SectionHeader from "../Shared/SectionHeader";
 const Tuitions = () => {
   const { user } = useAuth();
   const axiosInstance = useAxios();
@@ -31,14 +32,15 @@ const Tuitions = () => {
         viewport={{ once: false }}
         className="my-20"
       >
-        <h1 className='text-primary text-6xl font-bold my-20 text-center'>Latest Tuitions</h1>
+        
+        <SectionHeader label="Latest Tuitions" title="Discover Your Perfect Match" subtitle="Find the best tuition opportunities tailored to your expertise and preferences." />
         <div className="pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {tuitions.map((tuition, index) => (
             <Card key={index} tuition={tuition} />
           ))}
         </div>
         <div className="flex justify-center my-10">
-          <Link to={'/tuitions'} className="btn btn-primary btn-lg">See All Tuitions</Link>
+          <Link to={'/tuitions'} className="btn btn-secondary btn-lg">See All Tuitions</Link>
         </div>
       </motion.div>
     </Container>

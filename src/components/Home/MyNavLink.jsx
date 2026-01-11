@@ -7,7 +7,7 @@ const MyNavLink = ({children, to}) => {
         to={to} 
         className={({ isActive }) =>
           isActive
-            ? "text-primary font-semibold border-b-2 border-primary"
+            ? "text-secondary font-semibold border-b-2 border-secondary"
             : "hover:border-b-2 hover:border-primary"
         }
         >
