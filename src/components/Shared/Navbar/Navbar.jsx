@@ -3,6 +3,8 @@ import { Link, NavLink } from "react-router";
 import logo from "/elogo.png";
 import useAuth from "../../../hooks/useAuth";
 import MyNavLink from "../../Home/MyNavLink";
+import ProfileDropdown from "./ProfileDropdown";
+import ThemeToggle from "../../Shared/Navbar/ThemeToggle";
 const Navbar = () => {
   const { user, logOut } = useAuth();
 
@@ -19,8 +21,8 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="fixed w-full z-10 bg-accent">
-      <div className="py-4 text-white">
+    <div className="fixed w-full z-10 bg-primary text-white shadow-md">
+      <div className="">
         <Container>
           <div className="navbar">
             <div className="navbar-start">
@@ -70,7 +72,7 @@ const Navbar = () => {
               
               </ul>
             </div>
-            <div className="navbar-end">
+            {/* <div className="navbar-end">
               {user ? (
                 <div className="flex gap-5">
                   <img
@@ -93,7 +95,22 @@ const Navbar = () => {
                   Login
                 </Link>
               )}
-            </div>
+            </div> */}
+            <div className="navbar-end">
+            {user ? (
+              <ProfileDropdown logOut={logOut} />
+            ) : (
+              <div className="flex gap-2">
+                <Link to="/login" className="btn btn-ghost btn-sm">
+                  Login
+                </Link>
+                <Link to="/register" className="btn btn-primary btn-sm">
+                  Register
+                </Link>
+              </div>
+            )}
+            <ThemeToggle />
+          </div>
           </div>
         </Container>
       </div>

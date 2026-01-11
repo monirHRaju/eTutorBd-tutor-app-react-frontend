@@ -5,7 +5,7 @@
   default: true;
   --color-base-100: #fff;
   --color-base-300: #9898a0;
-  --color-primary: #495bed;
-  --color-secondary: #EDDB49;
-  --color-accent: #495bed;
+  --color-primary: #7C3AED;      /* Violet - Innovation */
+  --color-secondary: #06B6D4;    /* Cyan - Clarity */
+  --color-accent: #EC4899;  
 }
