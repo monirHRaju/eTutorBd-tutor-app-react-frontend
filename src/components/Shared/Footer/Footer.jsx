@@ -4,7 +4,7 @@ import logo from "/elogo.png";
 import Container from "../Container";
 const Footer = () => {
   return (
-    <div className="bg-secondary text-white mt-20">
+    <div className="bg-secondary text-white ">
       <Container>
       <footer className="px-4 divide-y  text-gray-800 relative bottom-0 left-0">
       <footer className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-4 text-base-content p-16">

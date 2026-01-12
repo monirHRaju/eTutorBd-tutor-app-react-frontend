@@ -1,4 +1,5 @@
 import BlogSection from '../../components/Home/BlogSection'
+import Faq from '../../components/Home/Faq'
 import FeaturedTutors from '../../components/Home/FeaturedTutors'
 import Features from '../../components/Home/Features'
 import Hero from '../../components/Home/Hero'
@@ -20,6 +21,7 @@ const Home = () => {
       <Testimonial></Testimonial>
       <HowItWorks></HowItWorks>
       <BlogSection></BlogSection>
+      <Faq></Faq>
       {/* More components */}
     </div>
   )

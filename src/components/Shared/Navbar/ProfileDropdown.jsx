@@ -3,9 +3,9 @@ import toast from 'react-hot-toast';
 import useAuth from '../../../hooks/useAuth';
 
 export default function ProfileDropdown() {
-  const { user } = useAuth();
+  const { user, logOut} = useAuth();
   const navigate = useNavigate();
-  const { logOut } = useAuth();
+
 
   const handleLogout = async () => {
     try {

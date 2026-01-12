@@ -48,14 +48,14 @@ export default function TuitionDetails() {
         <div className="card-body gap-6">
           {/* Header */}
           <div className="text-center">
-            <h1 className="text-2xl md:text-3xl font-bold text-primary">
+            <h1 className="text-2xl md:text-3xl font-bold text-secondary">
               {subject}
             </h1>
             <p className="text-sm text-gray-500 mt-1">
               Job ID : {jobId} · Posted at : {createdAt}
             </p>
 
-            <div className="flex justify-center items-center gap-2 mt-3 text-primary">
+            <div className="flex justify-center items-center gap-2 mt-3 text-secondary">
               <FaMapMarkerAlt />
               <span className="font-semibold">{location}, {district}</span>
             </div>
@@ -73,12 +73,12 @@ export default function TuitionDetails() {
             <InfoItem
               icon={<FaBook />}
               label="Subject"
-              value={<span className="badge badge-success">{subject}</span>}
+              value={<span className="badge badge-secondary">{subject}</span>}
             />
             <InfoItem
               icon={<FaMoneyBillWave />}
               label="Salary"
-              value={<span className="text-primary font-semibold">৳ {budget}</span>}
+              value={<span className="text-secondary font-semibold">৳ {budget}</span>}
             />
           </div>
 
@@ -92,8 +92,8 @@ export default function TuitionDetails() {
           <div className="flex justify-end">
             {
               user 
-              ? <Button onClick={() => setIsOpen(true)} className="btn btn-outline btn-primary gap-2" label='Apply as Tutor' />
-              : <Link to={'/login'} className='btn btn-primary'>Apply as Tutor</Link>
+              ? <Button onClick={() => setIsOpen(true)} className="btn btn-outline btn-secondary gap-2" label='Apply as Tutor' />
+              : <Link to={'/login'} className='btn btn-secondary'>Apply as Tutor</Link>
             }
           </div>
         </div>
@@ -106,7 +106,7 @@ export default function TuitionDetails() {
 function InfoItem({ icon, label, value }) {
   return (
     <div className="flex gap-3 items-start">
-      <div className="text-primary mt-1">{icon}</div>
+      <div className="text-secondary mt-1">{icon}</div>
       <div>
         <p className="text-gray-500">{label} :</p>
         <p className="font-medium">{value}</p>
