@@ -16,12 +16,13 @@ const Navbar = () => {
       <li><MyNavLink to={"/dashboard/post-tuition"}>Add Tuition</MyNavLink></li>
       <li><MyNavLink to={"/tuitions"}>All Tuitions</MyNavLink></li>
       <li><MyNavLink to={"/tutors"}>Tutors</MyNavLink></li>
+      <li><MyNavLink to={"/about"}>About</MyNavLink></li>
       <li><MyNavLink to={"/contact"}>Contact</MyNavLink></li>
       <li><MyNavLink to={"/dashboard"}>Dashboard</MyNavLink></li>
     </>
   );
   return (
-    <div className="fixed w-full z-10 bg-secondary text-white text-4xl shadow-md">
+    <div className="fixed w-full z-10 bg-primary text-primary-content text-4xl shadow-md">
       <div className="">
         <Container>
           <div className="navbar">
@@ -50,7 +51,7 @@ const Navbar = () => {
                 </div>
                 <ul
                   tabIndex="-1"
-                  className="menu menu-sm dropdown-content bg-secondary rounded-box z-1 mt-3 w-52 p-2 shadow-lg"
+                  className="menu menu-sm dropdown-content bg-primary rounded-box z-1 mt-3 w-52 p-2 shadow-lg"
                 >
                   {navLinks}
 
@@ -61,7 +62,7 @@ const Navbar = () => {
                 to={"/"}
                 className="flex gap-4 items-center text-2xl font-bold"
               >
-                <img src={logo} className="w-12" alt="" />
+                <img src={logo} className="w-12 hidden lg:block" alt="" />
                 <p>eTutor BD</p>
               </Link>
             </div>
@@ -104,7 +105,7 @@ const Navbar = () => {
                 <Link to="/login" className="btn btn-ghost btn-sm">
                   Login
                 </Link>
-                <Link to="/register" className="btn btn-secondary btn-sm">
+                <Link to="/signup" className="btn btn-secondary btn-sm">
                   Register
                 </Link>
               </div>

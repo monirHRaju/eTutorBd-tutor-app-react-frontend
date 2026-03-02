@@ -35,23 +35,23 @@ const MyTuitionDataRow = ({ application, refetch }) => {
   };
   return (
     <tr>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
         <Link to={`${import.meta.env.VITE_SITE_URL}/tuition-details/${application.tuitionId}`} target="_blank"><p className="link link-secondary">{application.subject}</p></Link>
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 ">{application.district}</p>
+      <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
+        <p className="text-base-content ">{application.district}</p>
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 ">{application.budget}</p>
+      <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
+        <p className="text-base-content ">{application.budget}</p>
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
         <p className="">{application.offerPrice}</p>
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
         <p
           className={
             application.status === "pending"
@@ -64,11 +64,11 @@ const MyTuitionDataRow = ({ application, refetch }) => {
           {application?.status}
         </p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 ">{application.createdAt}</p>
+      <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
+        <p className="text-base-content ">{application.createdAt}</p>
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
         <button
           
           onClick={() => handleDelete(application._id)}

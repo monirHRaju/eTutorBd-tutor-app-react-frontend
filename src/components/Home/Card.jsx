@@ -5,18 +5,15 @@ import { FaTransgender, FaLanguage } from "react-icons/fa";
 
 const Card = ({ tuition }) => {
   return (
-    <div className="space-y-3 col-span-1 group shadow-xl p-3 rounded-xl
-        group relative
-        overflow-hidden
-        bg-base-100
+    <div className="space-y-3 col-span-1 group shadow-lg p-5 rounded-2xl
+        relative overflow-hidden bg-base-100 border border-base-300
         transition-all duration-300 ease-out
-        hover:shadow-2xl hover:shadow-primary/20
-        hover:-translate-y-1
+        hover:shadow-xl hover:-translate-y-1
     ">
-      <div className="font-bold text-2xl text-secondary">
+      <div className="font-bold text-2xl text-primary">
         {tuition.subject}
       </div>
-      <div className="badge badge-secondary"> {tuition.district}</div>
+      <div className="badge badge-primary px-4 py-2"> {tuition.district}</div>
       
       <div className="flex flex-col gap-1">
         <div className="font-semibold flex flex-row gap-4 items-center">

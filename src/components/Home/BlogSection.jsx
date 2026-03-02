@@ -1,4 +1,5 @@
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import Container from "../Shared/Container";
 import SectionHeader from "../Shared/SectionHeader";
 
 const blogs = [
@@ -31,9 +32,8 @@ const blogs = [
 
 const BlogSection = () => {
   return (
-    <section className="py-24 bg-base-100">
-      <div className="max-w-7xl mx-auto px-4">
-
+    <section className="py-20 bg-base-100">
+      <Container>
         {/* Section Header */}
         <SectionHeader label="Blogs" title="Latest Blog And News" subtitle="Insights, tips and updates from our education experts" />
 
@@ -57,9 +57,9 @@ const BlogSection = () => {
               {blogs[0].desc}
             </p>
 
-            <button className="mt-5 inline-flex items-center gap-2 text-secondary font-medium hover:gap-3 transition">
+            <button className="mt-5 inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition">
               Learn More
-              <span className="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center">
+              <span className="w-8 h-8 rounded-full bg-primary text-primary-content flex items-center justify-center">
                 <FaArrowUpRightFromSquare size={14} />
               </span>
             </button>
@@ -88,7 +88,7 @@ const BlogSection = () => {
                     {blog.desc}
                   </p>
 
-                  <button className="mt-3 inline-flex items-center gap-2 text-secondary text-sm font-medium">
+                  <button className="mt-3 inline-flex items-center gap-2 text-primary text-sm font-medium">
                     Learn More
                     <FaArrowUpRightFromSquare />
                   </button>
@@ -98,7 +98,7 @@ const BlogSection = () => {
           </div>
 
         </div>
-      </div>
+      </Container>
     </section>
   );
 };

@@ -117,7 +117,7 @@ const Sidebar = () => {
               <hr className="border border-white"/>
               <button
                 onClick={()=> userLogout()}
-                className="flex cursor-pointer w-full items-center px-4 py-2 mt-5 text-primary bg-white rounded-full transition-colors duration-300 transform"
+                className="flex cursor-pointer w-full items-center px-4 py-2 mt-5 text-primary bg-base-100 rounded-full transition-colors duration-300 transform"
               >
                 <GrLogout className="w-5 h-5" />
 

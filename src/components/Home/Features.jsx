@@ -35,21 +35,21 @@ const features = [
 
 const Features = () => {
   return (
-    <Container>
-      <section className="my-20 px-4">
+    <section className="py-20">
+      <Container>
         <SectionHeader label="Features" title="Why Choose Our Tutoring Platform" subtitle="Experience the benefits of personalized learning with our expert tutors." />
-      <div className="max-w-screen-2xl mx-auto rounded-3xl bg-gradient-to-r from-[#06B6D4] to-[#4ae4ff] text-white p-10">
+        <div className="rounded-3xl bg-gradient-to-r from-primary to-accent text-primary-content p-10 shadow-lg mt-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
             <div
               key={feature.id}
               className={`flex gap-4 ${
                 index !== features.length - 1
-                  ? "lg:border-r border-white/30 lg:pr-6"
+                  ? "lg:border-r border-primary-content/30 lg:pr-6"
                   : ""
               }`}
             >
-              <div className="text-3xl bg-white/20 p-3 rounded-xl h-fit">
+              <div className="text-3xl bg-primary-content/20 p-3 rounded-xl h-fit">
                 {feature.icon}
               </div>
 
@@ -57,16 +57,16 @@ const Features = () => {
                 <h3 className="text-lg font-semibold mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-white/90 leading-relaxed">
+                <p className="text-sm text-primary-content/90 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
             </div>
           ))}
         </div>
-      </div>
+        </div>
+      </Container>
     </section>
-    </Container>
   );
 };
 

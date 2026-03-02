@@ -1,10 +1,10 @@
 const SectionHeader = ({ label, title, subtitle }) => {
   return (
-    <div className="text-center mb-14">
+    <div className="text-center mb-12">
       
       {/* Eyebrow label */}
       {label && (
-        <p className="text-sm font-semibold tracking-wider uppercase text-[var(--color-secondary)]">
+        <p className="text-sm font-semibold tracking-wider uppercase text-primary">
           {label}
         </p>
       )}

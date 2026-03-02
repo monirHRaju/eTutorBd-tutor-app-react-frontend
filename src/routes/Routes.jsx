@@ -33,6 +33,7 @@ import TutorRoute from './TutorRoute'
 import ManageOngoingTuitions from '../pages/Dashboard/Tutor/ManageOngoingTuitions'
 import ManageOngoingTutors from '../pages/Dashboard/Student/ManageOngoingTutors'
 import Contact from '../pages/Contact/Contact'
+import About from '../pages/About/About'
 
 export const router = createBrowserRouter([
   {
@@ -65,6 +66,11 @@ export const router = createBrowserRouter([
       {
         path: 'contact',
         Component: Contact
+      },
+      
+      {
+        path: 'about',
+        Component: About
       },
 
     ],

@@ -23,12 +23,12 @@ export default function TutorInfoCard({tutor}) {
 
   return (
     <div className="mx-auto">
-      <div className="card bg-base-100 shadow-xl rounded-2xl overflow-hidden hover:shadow-2xl transition">
+      <div className="card bg-base-100 shadow-lg rounded-2xl overflow-hidden border border-base-300 hover:shadow-xl transition-shadow duration-300">
         {/* Header */}
         <div className="h-24 bg-gradient-to-r from-secondary to-secondary relative">
           <div className="absolute -bottom-10 left-1/2 -translate-x-1/2">
             <div className="avatar">
-              <div className="w-20 rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2 bg-white">
+              <div className="w-20 rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2 bg-base-100">
                 {photoURL ? (
                   <img src={photoURL} alt={name} />
                 ) : (
@@ -49,7 +49,7 @@ export default function TutorInfoCard({tutor}) {
         <div className="card-body items-center text-center pt-14">
           <h3 className="text-lg font-semibold">{name}</h3>
 
-          <div className="flex items-center gap-2 text-sm text-gray-500">
+          <div className="flex items-center gap-2 text-sm text-base-content/70">
             <FaMapMarkerAlt />
             <span>{location}</span>
             <span>•</span>
@@ -61,17 +61,17 @@ export default function TutorInfoCard({tutor}) {
           <div className="w-full mt-4 grid grid-cols-3 gap-2 text-center">
             <div className="bg-base-200 rounded-xl p-2">
               <p className="font-semibold text-sm">{experience}</p>
-              <p className="text-xs text-gray-500">Experience</p>
+              <p className="text-xs text-base-content/70">Experience</p>
             </div>
 
             <div className="bg-base-200 rounded-xl p-2">
               <p className="font-semibold text-sm">{education}</p>
-              <p className="text-xs text-gray-500">Education</p>
+              <p className="text-xs text-base-content/70">Education</p>
             </div>
 
             <div className="bg-base-200 rounded-xl p-2">
               <p className="font-semibold text-sm">{daysPerWeek}</p>
-              <p className="text-xs text-gray-500">Days/Week</p>
+              <p className="text-xs text-base-content/70">Days/Week</p>
             </div>
           </div>
 

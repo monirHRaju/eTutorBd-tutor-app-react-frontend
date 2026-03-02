@@ -61,20 +61,20 @@ const TuitionsDataRow = ({ tuition, refetch }) => {
 
   return (
     <tr>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 ">{tuition?.subject}</p>
+      <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
+        <p className="text-base-content ">{tuition?.subject}</p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 ">{tuition?.className}</p>
+      <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
+        <p className="text-base-content ">{tuition?.className}</p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
         <p className="">{tuition?.district}</p>
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
         <p className="">{tuition?.budget}</p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
         <p
           className={
             tuition?.status === "accepted"
@@ -97,7 +97,7 @@ const TuitionsDataRow = ({ tuition, refetch }) => {
         }
         </p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
         <p
           className={
             tuition?.tutorEnrolled === true
@@ -109,7 +109,7 @@ const TuitionsDataRow = ({ tuition, refetch }) => {
         </p>
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
         
         {/* see application */}  
 

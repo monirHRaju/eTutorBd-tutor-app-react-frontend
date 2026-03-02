@@ -26,7 +26,7 @@ const ManageUsers = () => {
                   <tr>
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3 bg-base-100 border-b border-base-300 text-base-content text-left text-sm uppercase font-normal'
                     >
                       User
                     </th>
@@ -35,20 +35,20 @@ const ManageUsers = () => {
                     
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3 bg-base-100 border-b border-base-300 text-base-content text-left text-sm uppercase font-normal'
                     >
                       Role
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3 bg-base-100 border-b border-base-300 text-base-content text-left text-sm uppercase font-normal'
                     >
                       Status
                     </th>
 
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3 bg-base-100 border-b border-base-300 text-base-content text-left text-sm uppercase font-normal'
                     >
                       Action
                     </th>

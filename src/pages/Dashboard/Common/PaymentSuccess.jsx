@@ -44,10 +44,10 @@ useEffect(() => {
       <div className="flex items-center flex-col">
         <BsFillPatchCheckFill color="green" size={150} />
       <h1 className="text-5xl font-semibold mt-10">Payment Successful</h1>
-      <p className="text-gray-500 my-5 text-2xl">Thank you! Your Payment was successfully processed</p>
+      <p className="text-base-content/70 my-5 text-2xl">Thank you! Your Payment was successfully processed</p>
       </div>
       <div className="border py-3 px-10 border-gray-300 h-20 bg-gray-100 rounded-2xl my-10">
-        <p className="text-gray-500">Transaction Id : <span className="text-black">{paymentData?.transactionId}</span></p>
+        <p className="text-base-content/70">Transaction Id : <span className="text-base-content">{paymentData?.transactionId}</span></p>
       </div>
       <Link to={'/dashboard/payments'} className="btn btn-info">See Payment History</Link>
     </div>

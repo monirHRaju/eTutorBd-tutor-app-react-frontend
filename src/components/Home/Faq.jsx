@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
+import Container from "../Shared/Container";
 
 const faqs = [
   {
@@ -32,12 +33,11 @@ const Faq = () => {
   };
 
   return (
-    <section className="py-24 bg-base-200">
-      <div className="max-w-4xl mx-auto px-4">
-
+    <section className="py-20 bg-base-200">
+      <Container>
         {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-sm font-semibold tracking-wider uppercase text-secondary">
+        <div className="text-center mb-12">
+          <p className="text-sm font-semibold tracking-wider uppercase text-primary">
             FAQ
           </p>
           <h2 className="mt-3 text-3xl md:text-4xl font-bold text-base-content">
@@ -56,7 +56,7 @@ const Faq = () => {
             return (
               <div
                 key={index}
-                className="bg-base-100 border border-base-300 rounded-2xl overflow-hidden"
+                className="bg-base-100 border border-base-300 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
                 {/* Question */}
                 <button
@@ -84,8 +84,7 @@ const Faq = () => {
             );
           })}
         </div>
-
-      </div>
+      </Container>
     </section>
   );
 };

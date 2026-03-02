@@ -41,7 +41,7 @@ const TutorProfile = () => {
                     <FaStar key={i} />
                   ))}
                 </div>
-                <span className="text-sm text-gray-500">
+                <span className="text-sm text-base-content/70">
                   ({tutor.reviews} reviews)
                 </span>
               </div>
@@ -105,7 +105,7 @@ const TutorProfile = () => {
           {/* About */}
           <div>
             <h3 className="font-semibold mb-2">About Tutor</h3>
-            <p className="text-gray-600">{tutor.bio}</p>
+            <p className="text-base-content/70">{tutor.bio}</p>
           </div>
         </div>
       </div>

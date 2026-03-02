@@ -22,7 +22,7 @@ export default function ProfileDropdown() {
   };
 
   return (
-    <div className="dropdown dropdown-end text-black dark:text-white">
+    <div className="dropdown dropdown-end text-base-content">
       <button className="btn btn-ghost btn-circle avatar border-2 border-white">
         <div className="w-10 rounded-full">
           <img

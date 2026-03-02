@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaUserEdit, FaChalkboardTeacher, FaHandshake } from "react-icons/fa";
+import Container from "../Shared/Container";
 import SectionHeader from "../Shared/SectionHeader";
 
 const steps = [
@@ -36,19 +37,14 @@ const cardVariants = {
 
 function HowItWorks() {
   return (
-    <section className="py-24 bg-base-200 relative overflow-hidden">
-      
-      {/* Soft decorative blur */}
-      {/* <div className="absolute -top-32 -left-32 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
-      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-secondary/20 rounded-full blur-3xl" /> */}
-
-      <div className="relative max-w-6xl mx-auto px-4 text-center">
-        
-        {/* Heading */}
+    <section className="py-20 bg-base-200 relative overflow-hidden">
+      <Container>
+        <div className="relative text-center">
+          {/* Heading */}
         <SectionHeader label="How It Works" title="Simple 3-Step Process" subtitle="eTutor BD makes tuition matching easy with a simple 3-step process." />
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
           {steps.map((step, i) => (
             <motion.div
               key={i}
@@ -58,10 +54,10 @@ function HowItWorks() {
               whileInView="visible"
               viewport={{ once: true }}
               whileHover={{
-                scale: 1.06,
-                y: -10,
+                scale: 1.02,
+                y: -4,
               }}
-              className="group relative bg-base-100 p-10 rounded-3xl border border-base-300 shadow-md hover:shadow-xl transition"
+              className="group relative bg-base-100 p-10 rounded-3xl border border-base-300 shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               {/* Glow ring */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-20 blur-xl transition" />
@@ -87,7 +83,8 @@ function HowItWorks() {
             </motion.div>
           ))}
         </div>
-      </div>
+        </div>
+      </Container>
     </section>
   );
 }

@@ -3,19 +3,22 @@ import React, { useEffect, useState } from "react";
 const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(false);
 
-  // Initialize theme on mount
+  // Initialize theme on mount (migrate legacy "light"/"dark" to etutor-*)
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "light";
-    const theme = savedTheme === "dark" ? "dark" : "light";
-    setIsDark(theme === "dark");
+    let savedTheme = localStorage.getItem("theme") || "etutor-light";
+    if (savedTheme === "dark") savedTheme = "etutor-dark";
+    if (savedTheme === "light") savedTheme = "etutor-light";
+    const theme = savedTheme === "etutor-dark" ? "etutor-dark" : "etutor-light";
+    setIsDark(theme === "etutor-dark");
     document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
   }, []);
 
   // Update theme when toggle changes
   const handleThemeChange = (e) => {
     const isChecked = e.target.checked;
     setIsDark(isChecked);
-    const newTheme = isChecked ? "dark" : "light";
+    const newTheme = isChecked ? "etutor-dark" : "etutor-light";
     document.documentElement.setAttribute("data-theme", newTheme);
     localStorage.setItem("theme", newTheme);
   };
@@ -31,7 +34,7 @@ const ThemeToggle = () => {
 
       {/* sun icon */}
       <svg
-        className="swap-off h-10 w-10 fill-current"
+        className="swap-off h-8 w-8 fill-current"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
@@ -40,7 +43,7 @@ const ThemeToggle = () => {
 
       {/* moon icon */}
       <svg
-        className="swap-on h-10 w-10 fill-current"
+        className="swap-on h-8 w-8 fill-current"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >

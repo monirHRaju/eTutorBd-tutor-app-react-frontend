@@ -48,14 +48,14 @@ export default function TuitionDetails() {
         <div className="card-body gap-6">
           {/* Header */}
           <div className="text-center">
-            <h1 className="text-2xl md:text-3xl font-bold text-secondary">
+            <h1 className="text-2xl md:text-3xl font-bold text-primary">
               {subject}
             </h1>
-            <p className="text-sm text-gray-500 mt-1">
-              Job ID : {jobId} · Posted at : {createdAt}
+            <p className="text-sm text-base-content/70 mt-1">
+              Job ID : {jobId} <br /> Posted at : {createdAt}
             </p>
 
-            <div className="flex justify-center items-center gap-2 mt-3 text-secondary">
+            <div className="flex justify-center items-center gap-2 mt-3 ">
               <FaMapMarkerAlt />
               <span className="font-semibold">{location}, {district}</span>
             </div>
@@ -73,7 +73,7 @@ export default function TuitionDetails() {
             <InfoItem
               icon={<FaBook />}
               label="Subject"
-              value={<span className="badge badge-secondary">{subject}</span>}
+              value={<span className="badge badge-secondary px-4 py-2">{subject}</span>}
             />
             <InfoItem
               icon={<FaMoneyBillWave />}
@@ -85,7 +85,7 @@ export default function TuitionDetails() {
           {/* Requirements */}
           <div className="border-t pt-4">
             <h3 className="font-semibold mb-1">Other Requirements :</h3>
-            <p className="text-sm text-gray-600">{requirements}</p>
+            <p className="text-sm text-base-content/70">{requirements}</p>
           </div>
 
           {/* Action */}
@@ -108,7 +108,7 @@ function InfoItem({ icon, label, value }) {
     <div className="flex gap-3 items-start">
       <div className="text-secondary mt-1">{icon}</div>
       <div>
-        <p className="text-gray-500">{label} :</p>
+        <p className="text-base-content/70">{label} :</p>
         <p className="font-medium">{value}</p>
       </div>
     </div>

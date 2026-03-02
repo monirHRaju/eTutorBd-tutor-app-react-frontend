@@ -11,23 +11,23 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative min-h-[70vh] flex items-center bg-gradient-to-br from-base-200/40 via-base-100 to-base-200/30">
+    <section className="relative min-h-[70vh] flex items-center bg-gradient-to-br from-base-200/40 via-base-100 to-base-200/30 pt-24">
       <Container>
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center py-12 md:py-0">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center py-16 md:py-20">
           {/* Left side - Text content */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="space-y-8 md:space-y-10 order-2 md:order-1"
           >
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.7 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
               className="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight tracking-tight"
             >
-              Find <span className="text-secondary">Trusted</span> Tutors
+              Find <span className="text-primary">Trusted</span> Tutors
               <br />
               Near You
             </motion.h1>
@@ -35,7 +35,7 @@ const Hero = () => {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.7 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
               className="text-lg md:text-xl text-base-content/70 max-w-xl leading-relaxed"
             >
               Post tuition needs or apply as a tutor and connect with verified
@@ -66,7 +66,7 @@ const Hero = () => {
                       type: "spring",
                       stiffness: 200,
                     }}
-                    className="w-16 md:w-20 rounded-full border-4 border-white shadow-md object-cover aspect-square -ml-3 first:ml-0"
+                    className="w-16 md:w-20 rounded-full border-4 border-base-100 shadow-md object-cover aspect-square -ml-3 first:ml-0"
                   />
                 ))}
               </div>
@@ -76,7 +76,7 @@ const Hero = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.6 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
               className="flex flex-wrap gap-5 items-center pt-4"
             >
               <Link
@@ -98,7 +98,7 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.92, x: 30 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             className="order-1 md:order-2 relative"
           >
             <div className="relative">
@@ -112,7 +112,7 @@ const Hero = () => {
               <motion.div
                 animate={{ y: [0, -12, 0] }}
                 transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                className="absolute -bottom-6 md:-bottom-10 right-4 md:right-12 bg-secondary text-white px-6 py-3 rounded-2xl shadow-xl text-lg font-bold"
+                className="absolute -bottom-6 md:-bottom-10 right-4 md:right-12 bg-primary text-primary-content px-6 py-3 rounded-2xl shadow-xl text-lg font-bold"
               >
                 500+ tutors online now
               </motion.div>

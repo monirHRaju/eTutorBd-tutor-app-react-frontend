@@ -44,7 +44,7 @@ const Profile = () => {
           <h2 className="text-3xl font-bold mt-4">{name}</h2>
 
           {/* Role */}
-          <div className="flex items-center gap-3 text-lg capitalize text-gray-600 mt-1">
+          <div className="flex items-center gap-3 text-lg capitalize text-base-content/70 mt-1">
             <FaUserGraduate className="text-2xl text-primary" />
             <span>{role}</span>
           </div>

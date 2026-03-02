@@ -46,18 +46,18 @@ const AdminStatistics = () => {
           {userStat.map((stat) => (
             <div
               key={stat._id}
-              className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md"
+              className="relative flex flex-col bg-clip-border rounded-xl bg-base-100 text-base-content shadow-md"
             >
               <div
-                className={`bg-clip-border mx-4 rounded-xl overflow-hidden bg-linear-to-tr shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center from-blue-600 to-blue-400 text-white shadow-blue-500/40`}
+                className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center from-primary to-accent text-primary-content shadow-primary/40"
               >
-                <FaUser className="w-6 h-6 text-white" />
+                <FaUser className="w-6 h-6 text-primary-content" />
               </div>
               <div className="p-4 text-right">
-                <p className="block antialiased font-sans text-2xl leading-normal font-normal text-blue-gray-600">
+                <p className="block antialiased font-sans text-2xl leading-normal font-normal text-base-content/70">
                   {stat._id}
                 </p>
-                <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
+                <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-base-content">
                   {stat.count}
                 </h4>
               </div>
@@ -74,18 +74,18 @@ const AdminStatistics = () => {
           {earningStat.map((stat, index) => (
             <div
               key={index}
-              className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md"
+              className="relative flex flex-col bg-clip-border rounded-xl bg-base-100 text-base-content shadow-md"
             >
               <div
-                className={`bg-clip-border mx-4 rounded-xl overflow-hidden bg-linear-to-tr shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center from-blue-600 to-blue-400 text-white shadow-blue-500/40`}
+                className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center from-primary to-accent text-primary-content shadow-primary/40"
               >
-                <FaMoneyBill className="w-6 h-6 text-white" />
+                <FaMoneyBill className="w-6 h-6 text-primary-content" />
               </div>
               <div className="p-4 text-right">
-                <p className="block antialiased font-sans text-2xl leading-normal font-normal text-blue-gray-600">
+                <p className="block antialiased font-sans text-2xl leading-normal font-normal text-base-content/70">
                   Total Payments ৳
                 </p>
-                <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
+                <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-base-content">
                   {stat.totalAmount}
                 </h4>
               </div>
@@ -102,18 +102,18 @@ const AdminStatistics = () => {
           {tuitionStat.map((stat) => (
             <div
               key={stat._id}
-              className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md"
+              className="relative flex flex-col bg-clip-border rounded-xl bg-base-100 text-base-content shadow-md"
             >
               <div
-                className={`bg-clip-border mx-4 rounded-xl overflow-hidden bg-linear-to-tr shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center from-blue-600 to-blue-400 text-white shadow-blue-500/40`}
+                className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center from-primary to-accent text-primary-content shadow-primary/40"
               >
-                <FaBookOpen className="w-6 h-6 text-white" />
+                <FaBookOpen className="w-6 h-6 text-primary-content" />
               </div>
               <div className="p-4 text-right">
-                <p className="block antialiased font-sans text-2xl leading-normal font-normal text-blue-gray-600">
+                <p className="block antialiased font-sans text-2xl leading-normal font-normal text-base-content/70">
                   {stat._id}
                 </p>
-                <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
+                <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-base-content">
                   {stat.count}
                 </h4>
               </div>

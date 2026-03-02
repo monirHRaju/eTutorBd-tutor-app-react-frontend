@@ -5,6 +5,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Container from "../Shared/Container";
 import SectionHeader from "../Shared/SectionHeader";
 
 const testimonials = [
@@ -48,9 +49,8 @@ const testimonials = [
 
 const TestimonialSlider = () => {
   return (
-    <section className="my-24 px-4">
-      <div className="max-w-7xl mx-auto">
-
+    <section className="py-20">
+      <Container>
         {/* Header */}
         <SectionHeader label="Testimonials" title="What Our Students Say" subtitle="Real feedback from students who improved their learning experience with us." />
 
@@ -79,7 +79,7 @@ const TestimonialSlider = () => {
         >
           {testimonials.map((item) => (
             <SwiperSlide key={item.id}>
-              <div className="h-full rounded-2xl p-6 shadow-lg">
+              <div className="h-full rounded-2xl p-6 shadow-lg bg-base-100 hover:shadow-xl transition-shadow duration-300">
                 
                 {/* Rating */}
                 <div className="flex mb-3">
@@ -101,7 +101,7 @@ const TestimonialSlider = () => {
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-12 h-12 rounded-full border-2 border-[var(--color-secondary)]"
+                    className="w-12 h-12 rounded-full border-2 border-primary/30"
                   />
                   <div>
                     <h4 className="font-semibold ">
@@ -117,8 +117,7 @@ const TestimonialSlider = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-
-      </div>
+      </Container>
     </section>
   );
 };

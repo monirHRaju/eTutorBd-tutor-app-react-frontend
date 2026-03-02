@@ -67,11 +67,11 @@ const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
           <div className="flex min-h-full items-center justify-center p-4">
             <DialogPanel
               transition
-              className="w-full max-w-md rounded-xl bg-white/5 p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0 shadow-xl"
+              className="w-full max-w-md rounded-xl bg-base-100 p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0 shadow-xl"
             >
               <DialogTitle
                 as="h3"
-                className="text-base/7 font-medium text-black"
+                className="text-base/7 font-medium text-base-content"
               >
                 All Applications for{" "}
                 <span className="text-primary">{tuition.subject}</span>
@@ -83,28 +83,28 @@ const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
                     <tr>
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                        className="px-5 py-3 bg-base-100 border-b border-base-300 text-base-content text-left text-sm uppercase font-normal"
                       >
                         Tutor Name
                       </th>
 
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                        className="px-5 py-3 bg-base-100 border-b border-base-300 text-base-content text-left text-sm uppercase font-normal"
                       >
                         Tutor Offer
                       </th>
 
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                        className="px-5 py-3 bg-base-100 border-b border-base-300 text-base-content text-left text-sm uppercase font-normal"
                       >
                         Status
                       </th>
 
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                        className="px-5 py-3 bg-base-100 border-b border-base-300 text-base-content text-left text-sm uppercase font-normal"
                       >
                         Action
                       </th>
@@ -113,7 +113,7 @@ const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
                   <tbody>
                     {applications.map((application) => (
                       <tr key={application._id}>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
                           <Link
                             to={`${import.meta.env.VITE_SITE_URL}/tutor-info/${
                               application.tutorEmail
@@ -125,13 +125,13 @@ const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
                           </Link>
                         </td>
 
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 ">
+                        <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
+                          <p className="text-base-content ">
                             {application.offerPrice}
                           </p>
                         </td>
 
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
                           <p
                             className={
                               application?.status === "enrolled"
@@ -149,7 +149,7 @@ const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
                           </p>
                         </td>
 
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <td className="px-5 py-5 border-b border-base-300 bg-base-100 text-sm">
                           {
                             role === "student" && <button
                             onClick={() => handlePayment(application)}
@@ -177,7 +177,7 @@ const ViewApplicationsModal = ({ tuition, isOpen, closeModal }) => {
               <div className="flex mt-2 justify-around">
                 <button
                   type="button"
-                  className="cursor-pointer inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+                  className="cursor-pointer btn btn-error btn-outline"
                   onClick={closeModal}
                 >
                   Cancel

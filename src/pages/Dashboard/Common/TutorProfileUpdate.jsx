@@ -118,7 +118,7 @@ useEffect(() => {
       
       <div className="">
         <form onSubmit={handleSubmit(handleProfileUpdate)}>
-          <div className="lg:flex lg:justify-around gap-5 w-6/12 mt-10 rounded-md sm:p-10 text-gray-900">
+          <div className="lg:flex lg:justify-around gap-5 w-6/12 mt-10 rounded-md sm:p-10 text-base-content">
             {/* left side form */}
             <div className="flex-1 min-w-[450px] p-8">
               <div className="space-y-4">
@@ -138,7 +138,7 @@ useEffect(() => {
                     })}
                     id="name"
                     placeholder="Enter Your Name Here"
-                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                    className="w-full px-3 py-2 border rounded-md border-base-300 focus:outline-primary bg-base-200 text-base-content"
                     data-temp-mail-org="0"
                   />
                   {errors.name && (
@@ -164,7 +164,7 @@ useEffect(() => {
                     type="file"
                     {...register("photo")}
                     id="photo"
-                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                    className="w-full px-3 py-2 border rounded-md border-base-300 focus:outline-primary bg-base-200 text-base-content"
                   />
                   {errors.photo && (
                     <p className="text-error text-sm mt-1">
@@ -185,7 +185,7 @@ useEffect(() => {
                     {...register("education")}
                     id="education"
                     placeholder="Enter Your Education Level"
-                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                    className="w-full px-3 py-2 border rounded-md border-base-300 focus:outline-primary bg-base-200 text-base-content"
                     data-temp-mail-org="0"
                   />
                   {errors.education && (
@@ -208,7 +208,7 @@ useEffect(() => {
                     {...register("expectedSalary")}
                     id="expectedSalary"
                     placeholder="Enter Expected Salary"
-                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                    className="w-full px-3 py-2 border rounded-md border-base-300 focus:outline-primary bg-base-200 text-base-content"
                   />
                 </div>
 
@@ -222,7 +222,7 @@ useEffect(() => {
                     {...register("daysPerWeek")}
                     id="daysPerWeek"
                     placeholder="Enter Days Per Week"
-                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                    className="w-full px-3 py-2 border rounded-md border-base-300 focus:outline-primary bg-base-200 text-base-content"
                   />
                 </div>
 
@@ -236,7 +236,7 @@ useEffect(() => {
                     {...register("experience")}
                     id="experience"
                     placeholder="Enter Your Experience"
-                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                    className="w-full px-3 py-2 border rounded-md border-base-300 focus:outline-primary bg-base-200 text-base-content"
                   />
                 </div>
 
@@ -249,7 +249,7 @@ useEffect(() => {
                     {...register("preferredMedium")}
                     id="preferredMedium"
                     placeholder="Enter Preferred Medium"
-                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                    className="w-full px-3 py-2 border rounded-md border-base-300 focus:outline-primary bg-base-200 text-base-content"
                     
                   >
                     <option value="Bangla">Bangla</option>
@@ -271,7 +271,7 @@ useEffect(() => {
                     {...register("preferredClasses")}
                     id="preferredClasses"
                     placeholder="Enter Preferred Classes"
-                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                    className="w-full px-3 py-2 border rounded-md border-base-300 focus:outline-primary bg-base-200 text-base-content"
                   />
                 </div>
 
@@ -288,7 +288,7 @@ useEffect(() => {
                     {...register("preferredSubjects")}
                     id="preferredSubjects"
                     placeholder="Enter Preferred Subjects"
-                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                    className="w-full px-3 py-2 border rounded-md border-base-300 focus:outline-primary bg-base-200 text-base-content"
                   />
                 </div>
 
@@ -301,7 +301,7 @@ useEffect(() => {
                     {...register("educationInfo")}
                     id="educationInfo"
                     placeholder="Enter Education Info"
-                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                    className="w-full px-3 py-2 border rounded-md border-base-300 focus:outline-primary bg-base-200 text-base-content"
                   
                   >
 
@@ -319,7 +319,7 @@ useEffect(() => {
                     {...register("location")}
                     id="location"
                     placeholder="Enter Your Location"
-                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                    className="w-full px-3 py-2 border rounded-md border-base-300 focus:outline-primary bg-base-200 text-base-content"
                   />
                 </div>
 
@@ -331,7 +331,7 @@ useEffect(() => {
                     defaultValue={userInfo?.gender}
                     {...register("gender")}
                     id="gender"
-                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                    className="w-full px-3 py-2 border rounded-md border-base-300 focus:outline-primary bg-base-200 text-base-content"
                   >
                     
                     <option value="Male">Male</option>

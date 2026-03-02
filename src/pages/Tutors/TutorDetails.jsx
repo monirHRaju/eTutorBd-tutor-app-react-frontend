@@ -52,7 +52,7 @@ const TutorDetails = () => {
           <div className="flex-1">
             <h2 className="text-2xl font-semibold">{name}</h2>
 
-            <div className="flex flex-wrap gap-4 mt-2 text-sm text-gray-600">
+            <div className="flex flex-wrap gap-4 mt-2 text-sm text-base-content/70">
               <span className="flex items-center gap-1">
                 <FaMapMarkerAlt /> {location}
               </span>

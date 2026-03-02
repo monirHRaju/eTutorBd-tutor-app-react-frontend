@@ -84,25 +84,25 @@ const OfferModal = ({ tuition, closeModal, isOpen, refetch }) => {
           <form onSubmit={handleSendOffer}>
             <DialogPanel
               transition
-              className="w-full max-w-md bg-white p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0 shadow-xl rounded-2xl"
+              className="w-full max-w-md bg-base-100 p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0 shadow-xl rounded-2xl"
             >
               <DialogTitle
                 as="h3"
-                className="text-lg font-medium text-center leading-6 text-gray-900"
+                className="text-lg font-medium text-center leading-6 text-base-content"
               >
-                Review Info Before Apply for this Tuition
+                Apply for this Tuition
               </DialogTitle>
               <div className="mt-2">
-                <p className="text-sm text-gray-500 font-semibold">
+                <p className="text-sm text-base-content/70 font-semibold">
                   Subject : {tuition.subject}
                 </p>
               </div>
               <div className="mt-2">
-                <p className="text-sm text-gray-500">{tuition.district}</p>
+                <p className="text-sm text-base-content/70">{tuition.district}</p>
               </div>
 
               <div className="mt-2">
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-base-content/70">
                   Budget: ৳ {tuition.budget}
                 </p>
               </div>
@@ -117,7 +117,7 @@ const OfferModal = ({ tuition, closeModal, isOpen, refetch }) => {
               <div className="flex mt-2 justify-around">
                 <button
                   type="submit"
-                  className="cursor-pointer inline-flex justify-center text-white btn btn-secondary px-4 py-2 text-sm font-medium"
+                  className="cursor-pointer inline-flex justify-center text-secondary-content btn btn-secondary px-4 py-2 text-sm font-medium"
                 >
                   Apply
                 </button>
