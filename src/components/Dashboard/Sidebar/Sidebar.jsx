@@ -13,7 +13,6 @@ import AdminMenu from "./Menu/AdminMenu";
 import useRole from "../../../hooks/useRole";
 import StudentMenu from "./Menu/StudentMenu";
 import TutorMenu from "./Menu/TutorMenu";
-import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 
 const Sidebar = () => {
@@ -41,7 +40,7 @@ const Sidebar = () => {
   return (
     <>
       {/* Small Screen Navbar, only visible till md breakpoint */}
-      <div className=" bg-accent text-white flex justify-between md:hidden">
+      <div className="bg-accent text-accent-content flex justify-between md:hidden">
         <div>
           <div className="block cursor-pointer p-4 font-bold">
             <Link to="/">
@@ -65,7 +64,7 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-accent w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-primary text-primary-content w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
           isActive && "-translate-x-full"
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
@@ -73,8 +72,8 @@ const Sidebar = () => {
           {/* Top Content */}
           <div>
             {/* Logo */}
-            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center mx-auto">
-              <span className="flex gap-3 items-center font-semibold text-white">
+            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center mx-auto bg-primary/90">
+              <span className="flex gap-3 items-center font-semibold text-primary-content">
                 <img
                   src={user?.photoURL || logo}
                   alt="logo"
@@ -114,10 +113,10 @@ const Sidebar = () => {
               )}
 
               
-              <hr className="border border-white"/>
+              <hr className="border border-primary-content/20"/>
               <button
                 onClick={()=> userLogout()}
-                className="flex cursor-pointer w-full items-center px-4 py-2 mt-5 text-primary bg-base-100 rounded-full transition-colors duration-300 transform"
+                className="flex cursor-pointer w-full items-center px-4 py-2 mt-5 btn rounded-full transition-colors duration-300 transform"
               >
                 <GrLogout className="w-5 h-5" />
 

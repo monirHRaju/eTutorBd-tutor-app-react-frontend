@@ -10,110 +10,190 @@ const Hero = () => {
     "https://i.ibb.co.com/kVsw45gW/st2.jpg",
   ];
 
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    show: (delay = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut", delay },
+    }),
+  };
+
   return (
-    <section className="relative min-h-[70vh] flex items-center bg-gradient-to-br from-base-200/40 via-base-100 to-base-200/30 pt-24">
+    <section className="relative min-h-[80vh] flex items-center overflow-hidden pt-24 bg-gradient-to-br from-base-200/50 via-base-100 to-base-200/40">
+      {/* Decorative background blobs */}
+      <motion.div
+        aria-hidden="true"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.7 }}
+        transition={{ duration: 1 }}
+        className="pointer-events-none absolute -top-32 -right-10 h-72 w-72 rounded-full bg-primary/15 blur-3xl"
+      />
+      <motion.div
+        aria-hidden="true"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.5 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        className="pointer-events-none absolute -bottom-24 -left-10 h-80 w-80 rounded-full bg-accent/20 blur-3xl"
+      />
+
       <Container>
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center py-16 md:py-20">
+        <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center py-12 md:py-20">
           {/* Left side - Text content */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="space-y-8 md:space-y-10 order-2 md:order-1"
+            initial="hidden"
+            animate="show"
+            className="space-y-7 md:space-y-9 order-2 md:order-1"
           >
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight tracking-tight"
+            <motion.span
+              variants={fadeUp}
+              custom={0}
+              className="inline-flex items-center gap-2 rounded-full bg-primary/5 px-3 py-1 text-xs md:text-sm text-primary border border-primary/15"
             >
-              Find <span className="text-primary">Trusted</span> Tutors
-              <br />
-              Near You
+              <span className="h-2 w-2 rounded-full bg-primary" />
+              Learn smarter with verified tutors
+            </motion.span>
+
+            <motion.h1
+              variants={fadeUp}
+              custom={0.15}
+              className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight"
+            >
+              Upgrade your{" "}
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                learning journey
+              </span>
+              <br className="hidden sm:block" /> with expert tutors.
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-              className="text-lg md:text-xl text-base-content/70 max-w-xl leading-relaxed"
+              variants={fadeUp}
+              custom={0.3}
+              className="text-base md:text-lg text-base-content/70 max-w-xl leading-relaxed"
             >
-              Post tuition needs or apply as a tutor and connect with verified
-              students and qualified teachers across Bangladesh.
+              Post tuition needs in minutes or apply as a tutor. eTutor BD
+              intelligently connects students with trusted, verified teachers
+              in their city and online.
             </motion.p>
-
-            {/* Stats + Avatars */}
-            <div className="flex flex-wrap items-center gap-8 md:gap-12">
-              <div>
-                <div className="text-4xl md:text-5xl font-bold">5.1K+</div>
-                <p className="text-base-content/60 text-sm md:text-base mt-1">
-                  Active Students
-                  <br />
-                  All Over Bangladesh
-                </p>
-              </div>
-
-              <div className="flex">
-                {avatars.map((src, i) => (
-                  <motion.img
-                    key={i}
-                    src={src}
-                    alt="student"
-                    initial={{ scale: 0.8, x: -20 * (avatars.length - i) }}
-                    animate={{ scale: 1, x: 0 }}
-                    transition={{
-                      delay: 0.7 + i * 0.15,
-                      type: "spring",
-                      stiffness: 200,
-                    }}
-                    className="w-16 md:w-20 rounded-full border-4 border-base-100 shadow-md object-cover aspect-square -ml-3 first:ml-0"
-                  />
-                ))}
-              </div>
-            </div>
 
             {/* CTA buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-              className="flex flex-wrap gap-5 items-center pt-4"
+              variants={fadeUp}
+              custom={0.45}
+              className="flex flex-wrap gap-4 items-center pt-2"
             >
               <Link
                 to="/tutors"
-                className="btn btn-secondary btn-lg px-10 shadow-lg shadow-primary/30"
+                className="btn btn-primary btn-lg px-10 shadow-lg shadow-primary/30"
               >
-                Find A Tutor
+                Find a Tutor
               </Link>
               <Link
                 to="/tuitions"
-                className="btn btn-outline btn-lg text-lg font-semibold hover:bg-primary/10"
+                className="btn btn-ghost btn-lg border border-base-300/80 bg-base-100/60 backdrop-blur-md hover:bg-base-200/80"
               >
-                Browse Tuitions →
+                Browse Tuitions
               </Link>
+            </motion.div>
+
+            {/* Stats + avatars */}
+            <motion.div
+              variants={fadeUp}
+              custom={0.6}
+              className="flex flex-wrap items-center gap-6 md:gap-10 pt-4"
+            >
+              <div className="space-y-1">
+                <p className="text-3xl md:text-4xl font-bold text-primary">
+                  5.1K+
+                </p>
+                <p className="text-xs md:text-sm text-base-content/60">
+                  Active students & parents
+                  <br />
+                  across Bangladesh
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-3">
+                  {avatars.map((src, i) => (
+                    <motion.img
+                      key={i}
+                      src={src}
+                      alt="Student avatar"
+                      whileHover={{ y: -3, scale: 1.03 }}
+                      transition={{ type: "spring", stiffness: 200 }}
+                      className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-base-100 shadow-md object-cover"
+                    />
+                  ))}
+                </div>
+                <span className="text-xs md:text-sm text-base-content/70">
+                  Loved by students, trusted by parents.
+                </span>
+              </div>
             </motion.div>
           </motion.div>
 
-          {/* Right side - Image */}
+          {/* Right side - Illustration card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.92, x: 30 }}
+            initial={{ opacity: 0, scale: 0.92, x: 40 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
             className="order-1 md:order-2 relative"
           >
             <div className="relative">
-              <img
-                src="https://i.ibb.co.com/fGNN1qrp/hero-student-photo.png"
-                alt="Happy student learning"
-                className="w-full max-h-[680px] object-contain mx-auto drop-shadow-2xl"
-              />
-
-              {/* Optional subtle floating badge */}
               <motion.div
-                animate={{ y: [0, -12, 0] }}
-                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                className="absolute -bottom-6 md:-bottom-10 right-4 md:right-12 bg-primary text-primary-content px-6 py-3 rounded-2xl shadow-xl text-lg font-bold"
+                animate={{ y: [0, -10, 0] }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 6,
+                  ease: "easeInOut",
+                }}
+                className="rounded-3xl border border-base-300/60 bg-base-100/80 backdrop-blur-xl shadow-2xl shadow-primary/15 overflow-hidden"
               >
+                <img
+                  src="https://i.ibb.co.com/fGNN1qrp/hero-student-photo.png"
+                  alt="Happy student learning"
+                  className="w-full max-h-[520px] object-cover"
+                />
+              </motion.div>
+
+              {/* Floating stats card */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 5,
+                  ease: "easeInOut",
+                  delay: 0.2,
+                }}
+                className="absolute -bottom-6 left-3 md:left-8 bg-base-100/95 border border-base-300/60 rounded-2xl px-4 py-3 shadow-xl flex items-center gap-3"
+              >
+                <div className="h-9 w-9 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <span className="h-2.5 w-2.5 rounded-full bg-primary" />
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-wide text-base-content/60">
+                    Live tuitions this week
+                  </p>
+                  <p className="text-sm font-semibold">320+ ongoing sessions</p>
+                </div>
+              </motion.div>
+
+              {/* Online tutors badge */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 4,
+                  ease: "easeInOut",
+                  delay: 0.4,
+                }}
+                className="absolute -top-5 right-3 md:right-8 bg-primary text-primary-content px-4 py-2 rounded-2xl shadow-lg text-xs md:text-sm font-semibold flex items-center gap-2"
+              >
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success/70 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-success" />
+                </span>
                 500+ tutors online now
               </motion.div>
             </div>

@@ -78,7 +78,7 @@ export default function TuitionDetails() {
             <InfoItem
               icon={<FaMoneyBillWave />}
               label="Salary"
-              value={<span className="text-secondary font-semibold">৳ {budget}</span>}
+              value={<span className="font-semibold">৳ {budget}</span>}
             />
           </div>
 
