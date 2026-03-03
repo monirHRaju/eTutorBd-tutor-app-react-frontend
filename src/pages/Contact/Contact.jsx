@@ -3,12 +3,12 @@ import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-base-200 py-12 px-4">
+    <div className="min-h-screen bg-base-200 py-28 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-3">Contact eTutor BD</h1>
-          <p className="text-base-content/70 max-w-xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold text-base-content">Contact eTutor BD</h1>
+          <p className="mt-6 max-w-2xl mx-auto text-base-content/70">
             Have questions or need help? Reach out to us and our team will get back to you shortly.
           </p>
         </div>

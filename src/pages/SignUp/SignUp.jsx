@@ -198,6 +198,12 @@ const SignUp = () => {
               Login
             </Link>
           </p>
+          <p className="text-center mt-8 text-base-content/70">
+            Back to home?{" "}
+            <Link to="/" className="font-semibold text-primary hover:underline">
+              Go Home
+            </Link> 
+          </p>
         </div>
       </div>
     </div>

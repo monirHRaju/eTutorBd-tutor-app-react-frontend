@@ -57,10 +57,10 @@ function HowItWorks() {
                 scale: 1.02,
                 y: -4,
               }}
-              className="group relative bg-base-100 p-10 rounded-3xl border border-base-300 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="group relative bg-base-100 p-10 rounded-3xl border border-base-300 shadow-lg transition-shadow duration-300"
             >
               {/* Glow ring */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-20 blur-xl transition" />
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary to-secondary opacity-0 blur-xl transition" />
 
               {/* Icon */}
               <motion.div

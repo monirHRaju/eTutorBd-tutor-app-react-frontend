@@ -20,7 +20,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[80vh] flex items-center overflow-hidden pt-24 bg-gradient-to-br from-base-200/50 via-base-100 to-base-200/40">
+    <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-base-200/50 via-base-100 to-base-200/40">
       {/* Decorative background blobs */}
       <motion.div
         aria-hidden="true"
@@ -148,12 +148,12 @@ const Hero = () => {
                   duration: 6,
                   ease: "easeInOut",
                 }}
-                className="rounded-3xl border border-base-300/60 bg-base-100/80 backdrop-blur-xl shadow-2xl shadow-primary/15 overflow-hidden"
+                className="rounded-3xl border border-base-300/60 bg-base-100/80 backdrop-blur-xl shadow-2xl shadow-primary/15 overflow-hidden flex items-center justify-center p-6 md:p-10"
               >
                 <img
-                  src="https://i.ibb.co.com/fGNN1qrp/hero-student-photo.png"
-                  alt="Happy student learning"
-                  className="w-full max-h-[520px] object-cover"
+                  src="https://images.pexels.com/photos/5905709/pexels-photo-5905709.jpeg?_gl=1*1mgf85l*_ga*MTg5NTI5MTE2MS4xNzY1NzA3MTkz*_ga_8JE65Q40S6*czE3NzI1NTE5MDIkbzkkZzEkdDE3NzI1NTE5NTgkajQkbDAkaDA."
+                  alt="Students learning with tutors - education illustration"
+                  className="w-full max-h-[420px] md:max-h-[480px] object-contain"
                 />
               </motion.div>
 

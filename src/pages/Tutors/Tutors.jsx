@@ -20,7 +20,7 @@ const Tutors = () => {
   });
 
   return (
-    <div>
+    <div className='py-28 bg-base-200'>
       <Container>
         <SectionHeader label="Tutors" title="Meet Our Expert Tutors" subtitle="Discover highly qualified and experienced tutors ready to guide your learning journey." />
         <div className="pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
